@@ -9,7 +9,7 @@ exclude:
   - "/vendor/"
 
 # Site settings
-title: Centrarium
+title: dongsun1 Blog
 subtitle: "A simple yet classy theme for your Jekyll website or blog"
 email: le12352@gmail.com
 name: Ben Centra
@@ -21,7 +21,7 @@ description: >
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "https://dongsun1.github.io" # the base hostname & protocol for your site
 cover: "/assets/header_image.jpg"
-logo: "/assets/logo.png"
+logo: ""
 
 # Build settings
 markdown: kramdown
