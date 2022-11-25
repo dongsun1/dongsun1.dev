@@ -144,6 +144,8 @@ pre code.hljs {
     position: relative;
   }
   .logo {
+	display: flex;
+	align-items: center;
     float: left;
     height: 4em;
     @include media ($tablet) {
