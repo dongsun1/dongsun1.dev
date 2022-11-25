@@ -222,6 +222,10 @@ models:
         name: layout
         label: Page Layout
         required: true
+      - type: boolean
+        name: show
+        label: Show
+        required: true
       - type: string
         name: title
         label: Title

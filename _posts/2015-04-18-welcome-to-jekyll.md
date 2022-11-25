@@ -5,6 +5,7 @@ date:   2015-04-18T14:25:52-05:00
 categories: Jekyll
 author: dongsun1
 cover:  "/assets/instacode.png"
+show: false
 ---
 
 You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run `jekyll serve`, which launches a web server and auto-regenerates your site when a file is updated.
