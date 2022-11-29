@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import Image from 'next-image-export-optimizer';
 import Link from 'next/link';
 import Github from '../public/github.png';
 
@@ -27,7 +27,7 @@ export default function Footer() {
             </svg>
           </a>
           <Link href="https://www.github.com/dongsun1" className="ml-3 text-gray-500">
-            <Image src={Github} alt="깃허브" />
+            <Image src={Github} alt="깃허브" width={16} height={16} />
           </Link>
         </span>
       </div>

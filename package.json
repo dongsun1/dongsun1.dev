@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "deploy-gh-pages": "rm -rf node_modules/.cache && next build && next export && next-image-export-optimizer && touch out/.nojekyll && git add -f out/ && git checkout -b temp-for-deploy-gh-pages && git commit -m \"Deploy Next.js to gh-pages\" && git subtree split --prefix out -b gh-pages && git push -f origin gh-pages:gh-pages && git branch -D gh-pages && git checkout main && git branch -D temp-for-deploy-gh-pages"
   },
   "dependencies": {
     "@emotion/react": "^11.10.5",
@@ -17,6 +18,7 @@
     "bootstrap": "^5.2.2",
     "eslint-config-next": "13.0.2",
     "next": "^13.0.5",
+    "next-image-export-optimizer": "^1.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "recoil": "^0.7.6",
