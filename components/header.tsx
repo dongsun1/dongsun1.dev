@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-export default function Home() {
+export default function Header() {
   return (
     <header className="text-gray-600 body-font absolute flex w-full border-b">
       <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">

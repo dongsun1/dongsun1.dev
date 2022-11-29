@@ -1,3 +1,9 @@
+import Posts from '../components/posts';
+
 export default function Index() {
-  return <div></div>;
+  return (
+    <div>
+      <Posts />
+    </div>
+  );
 }
