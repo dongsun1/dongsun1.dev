@@ -3,10 +3,12 @@ import Footer from '../components/footer';
 
 export default function Home({ children }: { children: React.ReactNode }) {
   return (
-    <>
-      <Header />
-      {children}
-      <Footer />
-    </>
+    <section>
+      <div className="flex flex-col h-screen">
+        <Header />
+        {children}
+        <Footer />
+      </div>
+    </section>
   );
 }
