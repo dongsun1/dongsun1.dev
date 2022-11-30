@@ -1,7 +1,7 @@
 import moment from 'moment';
 import { IPost } from '../interfaces/post.interface';
 
-export default function Posts() {
+export default function Posts({ posts }: any) {
   const dummy: IPost[] = [
     {
       title: '[프로그래머스] 올바른 괄호 - JavaScript',

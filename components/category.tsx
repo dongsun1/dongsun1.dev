@@ -11,20 +11,6 @@ interface Category {
 }
 
 export default function Category({ category, posts }: Category) {
-  console.info(category);
-  console.info(posts);
-  // const category = 'example';
-  // const title = '[프로그래머스] 올바른 괄호 - JavaScript';
-  // const date = moment().format('yyyy-MM-DD');
-
-  // const category: Category = {
-  //   category,
-  //   posts: [
-  //     { title, date },
-  //     { title, date },
-  //   ],
-  // };
-
   return (
     <div className="text-gray-600 mb-8">
       <h1 className="text-3xl mb-3">{category}</h1>

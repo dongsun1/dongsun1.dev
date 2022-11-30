@@ -4,8 +4,8 @@ import Github from '../public/github.png';
 
 export default function Footer() {
   return (
-    <footer className="container border-t text-gray-600 body-font mx-auto mt-auto w-full">
-      <div className="container p-5 mx-auto flex items-center sm:flex-row flex-col">
+    <footer className="container text-gray-600 body-font mx-auto mt-auto w-full">
+      <div className="container p-5 mx-auto flex items-center sm:flex-row flex-col mt-6 border-t">
         <a className="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
           <span className="ml-3 text-xl">dongsun1 blog</span>
         </a>
