@@ -5,12 +5,11 @@ import remarkGfm from 'remark-gfm';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { getAllPosts, getPostBySlug } from '../../lib/matter-util';
+import { ParsedUrlQuery } from 'querystring';
 
-type TRouter = ReturnType<typeof useRouter> & {
-  query: {
-    slug: string;
-  };
-};
+interface IParams extends ParsedUrlQuery {
+  slug: string;
+}
 
 export default function PostPage({ post }: any) {
   console.info(post);
@@ -22,7 +21,7 @@ export default function PostPage({ post }: any) {
   const formatDate = moment(date).format('MMM MM, YYYY');
 
   return (
-    <div className="container px-32 py-20">
+    <div className="container px-32 py-8">
       <div className="w-5/6">
         <div className="border-b pb-2 mb-8">
           <h1 className="text-5xl font-bold pb-2">{title}</h1>
@@ -75,8 +74,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const { slug } = params;
-  const post = await getPostBySlug(slug as string);
+  const { slug } = params as IParams;
+  const post = await getPostBySlug(slug);
   return {
     props: {
       post,
