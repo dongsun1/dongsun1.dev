@@ -3,21 +3,21 @@ import { useRouter } from 'next/router';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { GetStaticPaths, GetStaticProps } from 'next';
+import { getAllPosts, getPostBySlug } from '../../lib/matter-util';
 
 type TRouter = ReturnType<typeof useRouter> & {
   query: {
-    post: string;
+    slug: string;
   };
 };
 
-export default function PostPage() {
-  const { query } = useRouter() as TRouter;
-
+export default function PostPage({ post }: any) {
+  console.info(post);
   const {
     frontMatter: { category, date, title },
     content,
-  } = JSON.parse(query.post);
+  } = post;
 
   const formatDate = moment(date).format('MMM MM, YYYY');
 
@@ -31,13 +31,13 @@ export default function PostPage() {
           </div>
         </div>
         <ReactMarkdown
-          className="prose max-w-none prose-p:m-0"
+          className="prose max-w-none prose-p:m-0 prose-pre:p-0 prose-pre:m-0 prose-pre:bg-transparent"
           remarkPlugins={[remarkGfm]}
           components={{
             code({ node, inline, className, children, style, ...props }) {
               const match = /language-(\w+)/.exec(className || '');
               return !inline && match ? (
-                <SyntaxHighlighter style={oneDark} language={match[1]} PreTag="div" {...props}>
+                <SyntaxHighlighter language={match[1]} {...props}>
                   {String(children).replace(/\n$/, '')}
                 </SyntaxHighlighter>
               ) : (
@@ -54,3 +54,32 @@ export default function PostPage() {
     </div>
   );
 }
+
+interface IPath {
+  params: {
+    slug: string;
+  };
+}
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const posts = await getAllPosts();
+  const paths = posts.reduce<IPath[]>((acc, { slug }) => {
+    acc.push({ params: { slug } });
+    return acc;
+  }, []);
+
+  return {
+    paths,
+    fallback: true,
+  };
+};
+
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const { slug } = params;
+  const post = await getPostBySlug(slug as string);
+  return {
+    props: {
+      post,
+    },
+  };
+};

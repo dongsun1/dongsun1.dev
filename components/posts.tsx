@@ -14,11 +14,7 @@ export default function Posts({ posts }: { posts: IPost[] }) {
                   <span className="mt-1 text-gray-500 text-sm">{date}</span>
                 </div>
                 <div className="md:flex-grow">
-                  <Link
-                    href={{ pathname: '/postPage', query: { post: JSON.stringify(posts[i]) } }}
-                    as={`/postPage/${slug}`}
-                    className="text-2xl font-medium text-gray-900 title-font mb-2"
-                  >
+                  <Link href={`/postPage/${slug}`} className="text-2xl font-medium text-gray-900 title-font mb-2">
                     {title}
                   </Link>
                   <p className="leading-relaxed">{desc}</p>
