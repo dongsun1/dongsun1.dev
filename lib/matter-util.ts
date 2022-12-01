@@ -17,7 +17,7 @@ export const getAllPosts = async () => {
   return posts;
 };
 
-export const getPostbySlug = async (slug: string) => {
+export const getPostBySlug = async (slug: string) => {
   const file = fs.readFileSync(`posts/${slug}.md`, 'utf-8');
 
   const { data: frontMatter, content } = matter(file);

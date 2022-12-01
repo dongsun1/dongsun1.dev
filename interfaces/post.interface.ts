@@ -6,7 +6,7 @@ export interface IFrontMatter {
 }
 export interface IPost {
   frontMatter: IFrontMatter;
-  slug: string;
+  slug?: string;
   content: string;
 }
 

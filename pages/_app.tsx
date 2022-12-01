@@ -1,10 +1,14 @@
 import type { AppProps } from 'next/app';
 import Layout from '../layouts/default';
 import '../styles/globals.css';
+import Head from 'next/head';
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <div className="h-screen">
+      <Head>
+        <meta name="google-site-verification" content="S5sCMf0g7PdO57UHYdEm9Mx5VYoxT12OvhsiUJU-rlk" />
+      </Head>
       <Layout>
         <Component {...pageProps} />
       </Layout>
