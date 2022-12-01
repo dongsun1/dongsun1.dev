@@ -3,13 +3,21 @@ import { useRouter } from 'next/router';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { a11yDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
+
+type TRouter = ReturnType<typeof useRouter> & {
+  query: {
+    post: string;
+  };
+};
 
 export default function PostPage() {
+  const { query } = useRouter() as TRouter;
+
   const {
     frontMatter: { category, date, title },
     content,
-  } = JSON.parse(useRouter().query.post as string);
+  } = JSON.parse(query.post);
 
   const formatDate = moment(date).format('MMM MM, YYYY');
 
@@ -26,10 +34,10 @@ export default function PostPage() {
           className="prose max-w-none prose-p:m-0"
           remarkPlugins={[remarkGfm]}
           components={{
-            code({ node, inline, className, children, ...props }) {
+            code({ node, inline, className, children, style, ...props }) {
               const match = /language-(\w+)/.exec(className || '');
               return !inline && match ? (
-                <SyntaxHighlighter style={a11yDark} language={match[1]} PreTag="div" {...props}>
+                <SyntaxHighlighter style={oneDark} language={match[1]} PreTag="div" {...props}>
                   {String(children).replace(/\n$/, '')}
                 </SyntaxHighlighter>
               ) : (

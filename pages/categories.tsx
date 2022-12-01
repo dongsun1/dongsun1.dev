@@ -1,6 +1,6 @@
 import Category from '../components/category';
 import SideBar from '../components/sidebar';
-import { IPost, ICategory } from '../interfaces/post.interface';
+import { IPost } from '../interfaces/post.interface';
 import { GetStaticProps } from 'next';
 import { getAllPosts } from '../lib/matter-util';
 
