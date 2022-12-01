@@ -1,62 +1,10 @@
-import moment from 'moment';
 import { IPost } from '../interfaces/post.interface';
 
-export default function Posts({ posts }: any) {
-  const dummy: IPost[] = [
-    {
-      title: '[프로그래머스] 올바른 괄호 - JavaScript',
-      category: 'example',
-      date: moment().format('yyyy-MM-DD'),
-      desc: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Temporibus animi, suscipit, harum vero ipsa at eius totam et quasi, ipsam itaque error voluptas qui libero modi tempore adipisci distinctio maiores!',
-    },
-    {
-      title: '[프로그래머스] 올바른 괄호 - JavaScript',
-      category: 'example',
-      date: moment().format('yyyy-MM-DD'),
-      desc: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Temporibus animi, suscipit, harum vero ipsa at eius totam et quasi, ipsam itaque error voluptas qui libero modi tempore adipisci distinctio maiores!',
-    },
-    {
-      title: '[프로그래머스] 올바른 괄호 - JavaScript',
-      category: 'example',
-      date: moment().format('yyyy-MM-DD'),
-      desc: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Temporibus animi, suscipit, harum vero ipsa at eius totam et quasi, ipsam itaque error voluptas qui libero modi tempore adipisci distinctio maiores!',
-    },
-    {
-      title: '[프로그래머스] 올바른 괄호 - JavaScript',
-      category: 'example2',
-      date: moment().format('yyyy-MM-DD'),
-      desc: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Temporibus animi, suscipit, harum vero ipsa at eius totam et quasi, ipsam itaque error voluptas qui libero modi tempore adipisci distinctio maiores!',
-    },
-    {
-      title: '[프로그래머스] 올바른 괄호 - JavaScript',
-      category: 'example2',
-      date: moment().format('yyyy-MM-DD'),
-      desc: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Temporibus animi, suscipit, harum vero ipsa at eius totam et quasi, ipsam itaque error voluptas qui libero modi tempore adipisci distinctio maiores!',
-    },
-    {
-      title: '[프로그래머스] 올바른 괄호 - JavaScript',
-      category: 'example2',
-      date: moment().format('yyyy-MM-DD'),
-      desc: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Temporibus animi, suscipit, harum vero ipsa at eius totam et quasi, ipsam itaque error voluptas qui libero modi tempore adipisci distinctio maiores!',
-    },
-    {
-      title: '[프로그래머스] 올바른 괄호 - JavaScript',
-      category: 'example3',
-      date: moment().format('yyyy-MM-DD'),
-      desc: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Temporibus animi, suscipit, harum vero ipsa at eius totam et quasi, ipsam itaque error voluptas qui libero modi tempore adipisci distinctio maiores!',
-    },
-    {
-      title: '[프로그래머스] 올바른 괄호 - JavaScript',
-      category: 'example3',
-      date: moment().format('yyyy-MM-DD'),
-      desc: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Temporibus animi, suscipit, harum vero ipsa at eius totam et quasi, ipsam itaque error voluptas qui libero modi tempore adipisci distinctio maiores!',
-    },
-  ];
-
+export default function Posts({ posts }: { posts: IPost[] }) {
   return (
     <section className="mt-4 text-gray-600 body-font overflow-hidden w-5/6">
       <div className="container px-5 ">
-        {dummy.map(({ title, category, date, desc }, index) => {
+        {posts.map(({ frontMatter: { title, category, date, desc } }, index) => {
           return (
             <div key={index} className="-my-8 divide-y-2 divide-gray-100">
               <div className="py-8 flex flex-wrap md:flex-nowrap">

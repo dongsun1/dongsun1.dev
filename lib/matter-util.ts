@@ -14,7 +14,6 @@ export const getAllPosts = async () => {
       content,
     };
   });
-  console.info(posts);
   return posts;
 };
 
