@@ -20,8 +20,12 @@ interface ICategories {
 export default function Categories({ posts }: { posts: IPost[] }) {
   const [changedPosts, setPosts] = useState(posts);
 
-  const getPosts = (changedPosts: IPost[]) => {
-    setPosts(changedPosts);
+  const getPosts = ({ category }: { category: string }) => {
+    if (category === 'All') setPosts(posts);
+    else {
+      const filteredPosts = posts.filter(({ frontMatter: { category: catg } }) => catg === category);
+      setPosts(filteredPosts);
+    }
   };
 
   const categories = changedPosts.reduce<ICategories>((acc, { frontMatter: { title, date, category, desc }, slug }) => {
