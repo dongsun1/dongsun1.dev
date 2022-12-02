@@ -1,7 +1,7 @@
 import Category from '../components/category';
 import SideBar from '../components/sidebar';
 import { IPost } from '../interfaces/post.interface';
-import { GetServerSideProps } from 'next';
+import { GetStaticProps } from 'next';
 import { getAllPosts } from '../lib/matter-util';
 
 interface IPosts {
@@ -33,7 +33,7 @@ export default function Categories({ posts }: { posts: IPost[] }) {
   );
 }
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   const posts = await getAllPosts();
   return {
     props: {

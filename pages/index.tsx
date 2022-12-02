@@ -5,7 +5,6 @@ import { IPost } from '../interfaces/post.interface';
 import { getAllPosts } from '../lib/matter-util';
 
 export default function Index({ posts }: { posts: IPost[] }) {
-  console.info(posts);
   return (
     <div className="container mx-auto">
       <div className="flex px-32">

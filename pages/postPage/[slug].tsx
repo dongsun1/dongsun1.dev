@@ -1,18 +1,24 @@
 import moment from 'moment';
-import { useRouter } from 'next/router';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { getAllPosts, getPostBySlug } from '../../lib/matter-util';
 import { ParsedUrlQuery } from 'querystring';
+import { useRouter } from 'next/router';
 
 interface IParams extends ParsedUrlQuery {
   slug: string;
 }
 
-export default function PostPage({ post }: any) {
-  console.info(post);
+interface IPost {
+  frontMatter: {
+    [key: string]: string;
+  };
+  content: string;
+}
+
+export default function PostPage({ post }: { post: IPost }) {
   const {
     frontMatter: { category, date, title },
     content,
@@ -69,13 +75,14 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return {
     paths,
-    fallback: true,
+    fallback: false,
   };
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { slug } = params as IParams;
-  const post = await getPostBySlug(slug);
+  const post: IPost = await getPostBySlug(slug);
+
   return {
     props: {
       post,
