@@ -12,12 +12,12 @@ interface Category {
 
 export default function Category({ category, posts }: Category) {
   return (
-    <div className="text-gray-600 mb-8">
+    <div className="mb-8">
       <h1 className="text-3xl mb-3">{category}</h1>
       {posts.map(({ title, date }, index) => {
         return (
           <div key={index} className="mb-1">
-            <Link href="/" className="mr-2 text-base hover:text-gray-900">
+            <Link href="/" className="mr-2 text-base text-gray-600 hover:text-gray-900">
               {title}
             </Link>
             <span className="text-sm text-slate-400">- {date}</span>

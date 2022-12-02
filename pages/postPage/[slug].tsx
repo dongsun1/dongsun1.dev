@@ -5,7 +5,6 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { getAllPosts, getPostBySlug } from '../../lib/matter-util';
 import { ParsedUrlQuery } from 'querystring';
-import { useRouter } from 'next/router';
 
 interface IParams extends ParsedUrlQuery {
   slug: string;
@@ -30,7 +29,7 @@ export default function PostPage({ post }: { post: IPost }) {
     <div className="container px-32 py-8">
       <div className="w-5/6">
         <div className="border-b pb-2 mb-8">
-          <h1 className="text-5xl font-bold pb-2">{title}</h1>
+          <h1 className="text-4xl font-bold pb-2">{title}</h1>
           <div>
             {formatDate} | {category}
           </div>

@@ -1,6 +1,6 @@
 import fs from 'fs';
 import matter from 'gray-matter';
-import { IPost } from '../interfaces/post.interface';
+import { IFrontMatter } from '../interfaces/post.interface';
 
 export const getAllPosts = async () => {
   const files = fs.readdirSync('posts');
@@ -15,6 +15,9 @@ export const getAllPosts = async () => {
       content,
     };
   });
+
+  posts.sort(({ frontMatter: { date: a } }, { frontMatter: { date: b } }) => new Date(b).getTime() - new Date(a).getTime());
+
   return posts;
 };
 

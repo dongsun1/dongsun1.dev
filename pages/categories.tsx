@@ -1,5 +1,6 @@
 import Category from '../components/category';
 import SideBar from '../components/sidebar';
+import Title from '../components/title';
 import { IPost } from '../interfaces/post.interface';
 import { GetStaticProps } from 'next';
 import { getAllPosts } from '../lib/matter-util';
@@ -22,13 +23,16 @@ export default function Categories({ posts }: { posts: IPost[] }) {
   }, {});
 
   return (
-    <div className="container flex mx-auto px-32 py-12">
-      <div className="flex flex-col w-5/6">
-        {Object.entries(categories).map(([category, posts], index) => {
-          return <Category key={index} category={category} posts={posts} />;
-        })}
+    <div className="container mx-auto">
+      <Title title="Categories" />
+      <div className="flex px-32">
+        <div className="flex flex-col w-5/6">
+          {Object.entries(categories).map(([category, posts], index) => {
+            return <Category key={index} category={category} posts={posts} />;
+          })}
+        </div>
+        <SideBar posts={posts} />
       </div>
-      <SideBar posts={posts} />
     </div>
   );
 }
