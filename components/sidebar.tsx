@@ -6,7 +6,7 @@ interface Posts {
   total: number;
 }
 
-export default function SideBar({ posts }: { posts: IPost[] }) {
+export default function SideBar({ posts, getPosts }: { posts: IPost[]; getPosts: () => void }) {
   const sideBar = posts.reduce<Posts>(
     (acc, { frontMatter: { category } }) => {
       if (!acc[category]) acc[category] = 0;
@@ -16,6 +16,10 @@ export default function SideBar({ posts }: { posts: IPost[] }) {
     },
     { total: 0 },
   );
+
+  const onClickCategory = () => {
+    getPosts();
+  };
 
   return (
     <div className="px-5 w-1/6">
@@ -29,12 +33,12 @@ export default function SideBar({ posts }: { posts: IPost[] }) {
         {Object.entries(sideBar).map(([category, number], index) => {
           if (category !== 'total')
             return (
-              <Link key={index} href="" className="flex items-center justify-between hover:bg-slate-100 px-2 py-3">
+              <button key={index} className="flex items-center justify-between hover:bg-slate-100 px-2 py-3">
                 <span>{category}</span>
                 <div className="flex items-center border rounded-xl px-2 py-1 text-white bg-black text-xs">
                   <span>{number}</span>
                 </div>
-              </Link>
+              </button>
             );
         })}
       </div>

@@ -5,6 +5,7 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { getAllPosts, getPostBySlug } from '../../lib/matter-util';
 import { ParsedUrlQuery } from 'querystring';
+import Toc from '../../components/toc';
 
 interface IParams extends ParsedUrlQuery {
   slug: string;
@@ -26,34 +27,37 @@ export default function PostPage({ post }: { post: IPost }) {
   const formatDate = moment(date).format('MMM MM, YYYY');
 
   return (
-    <div className="container px-32 py-8">
-      <div className="w-5/6">
+    <div className="container flex mx-auto px-16 py-8">
+      <div className="w-full px-16">
         <div className="border-b pb-2 mb-8">
           <h1 className="text-4xl font-bold pb-2">{title}</h1>
           <div>
             {formatDate} | {category}
           </div>
         </div>
-        <ReactMarkdown
-          className="prose max-w-none prose-p:m-0 prose-pre:p-0 prose-pre:m-0 prose-pre:bg-transparent"
-          remarkPlugins={[remarkGfm]}
-          components={{
-            code({ node, inline, className, children, style, ...props }) {
-              const match = /language-(\w+)/.exec(className || '');
-              return !inline && match ? (
-                <SyntaxHighlighter language={match[1]} {...props}>
-                  {String(children).replace(/\n$/, '')}
-                </SyntaxHighlighter>
-              ) : (
-                <code className={className} {...props}>
-                  {children}
-                </code>
-              );
-            },
-          }}
-        >
-          {content}
-        </ReactMarkdown>
+        <div className="flex">
+          <ReactMarkdown
+            className="w-5/6 prose max-w-none pr-8 prose-p:m-0 prose-pre:p-0 prose-pre:m-0 prose-pre:bg-transparent"
+            remarkPlugins={[remarkGfm]}
+            components={{
+              code({ node, inline, className, children, style, ...props }) {
+                const match = /language-(\w+)/.exec(className || '');
+                return !inline && match ? (
+                  <SyntaxHighlighter language={match[1]} {...props}>
+                    {String(children).replace(/\n$/, '')}
+                  </SyntaxHighlighter>
+                ) : (
+                  <code className={className} {...props}>
+                    {children}
+                  </code>
+                );
+              },
+            }}
+          >
+            {content}
+          </ReactMarkdown>
+          <Toc />
+        </div>
       </div>
     </div>
   );

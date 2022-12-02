@@ -1,6 +1,5 @@
 import fs from 'fs';
 import matter from 'gray-matter';
-import { IFrontMatter } from '../interfaces/post.interface';
 
 export const getAllPosts = async () => {
   const files = fs.readdirSync('posts');
@@ -25,7 +24,6 @@ export const getPostBySlug = async (slug: string) => {
   const file = fs.readFileSync(`posts/${slug}.md`, 'utf-8');
 
   const { data: frontMatter, content } = matter(file);
-  console.info('{ frontMatter, content }', { frontMatter, content });
 
   return { frontMatter, content };
 };

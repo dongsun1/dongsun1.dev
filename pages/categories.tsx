@@ -4,21 +4,29 @@ import Title from '../components/title';
 import { IPost } from '../interfaces/post.interface';
 import { GetStaticProps } from 'next';
 import { getAllPosts } from '../lib/matter-util';
+import { useState } from 'react';
 
 interface IPosts {
   title: string;
   date: string;
   category: string;
   desc: string;
+  slug: string;
 }
 interface ICategories {
   [key: string]: IPosts[];
 }
 
 export default function Categories({ posts }: { posts: IPost[] }) {
-  const categories = posts.reduce<ICategories>((acc, { frontMatter: { title, date, category, desc } }) => {
+  const [changedPosts, setPosts] = useState(posts);
+
+  const getPosts = (changedPosts: IPost[]) => {
+    setPosts(changedPosts);
+  };
+
+  const categories = changedPosts.reduce<ICategories>((acc, { frontMatter: { title, date, category, desc }, slug }) => {
     if (!acc[category]) acc[category] = [];
-    acc[category].push({ title, date, category, desc });
+    acc[category].push({ title, date, category, desc, slug });
     return acc;
   }, {});
 
@@ -31,7 +39,7 @@ export default function Categories({ posts }: { posts: IPost[] }) {
             return <Category key={index} category={category} posts={posts} />;
           })}
         </div>
-        <SideBar posts={posts} />
+        <SideBar posts={posts} getPosts={getPosts} />
       </div>
     </div>
   );

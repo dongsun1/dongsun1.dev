@@ -5,7 +5,7 @@ export default function Posts({ posts }: { posts: IPost[] }) {
   return (
     <section className="mt-4 text-gray-600 body-font overflow-hidden w-5/6">
       <div className="container px-5 ">
-        {posts.map(({ frontMatter: { title, category, date, desc }, slug }, i, posts) => {
+        {posts.map(({ frontMatter: { title, category, date, desc }, slug }, i) => {
           return (
             <div key={i} className="-my-8 divide-y-2 divide-gray-100">
               <div className="py-8 flex flex-wrap md:flex-nowrap">
@@ -13,11 +13,13 @@ export default function Posts({ posts }: { posts: IPost[] }) {
                   <span className="font-semibold title-font text-gray-700">{category}</span>
                   <span className="mt-1 text-gray-500 text-sm">{date}</span>
                 </div>
-                <div className="md:flex-grow">
+                <div className="flex flex-col md:flex-grow">
                   <Link href={`/postPage/${slug}`} className="text-2xl font-medium text-gray-900 title-font mb-2">
                     {title}
                   </Link>
-                  <p className="leading-relaxed">{desc}</p>
+                  <Link href={`/postPage/${slug}`} className="leading-relaxed hover:underline">
+                    {desc}
+                  </Link>
                 </div>
               </div>
             </div>

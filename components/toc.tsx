@@ -1,61 +1,40 @@
+import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
+import { getIntersectionObserver } from '../lib/observer';
+
 export default function Toc() {
+  const router = useRouter();
+  const [, setCurrentId] = useState<string>('');
+  const [headingEls, setHeadingEls] = useState<Element[]>([]);
+
+  useEffect(() => {
+    const observer = getIntersectionObserver(setCurrentId);
+    const headingElements = Array.from(document.querySelectorAll('h2, h3'));
+
+    setHeadingEls(
+      headingElements.map((el, i) => {
+        el.classList.add(i.toString());
+        el.id = i.toString();
+        return el;
+      }),
+    );
+
+    headingElements.map((header) => {
+      observer.observe(header);
+    });
+  }, [router]);
+
   return (
-    <div className="w-1/6 hidden lg:block">
-      <section className="text-gray-600 body-font">
-        <div className="container mx-auto flex flex-wrap">
-          <div className="flex relative py-3 sm:items-center md:w-2/3 mx-auto">
-            <div className="h-full w-6 absolute inset-0 flex items-center justify-center">
-              <div className="h-full w-1 bg-gray-200 pointer-events-none"></div>
-            </div>
-            <div className="flex-shrink-0 w-6 h-6 rounded-full mt-10 sm:mt-0 inline-flex items-center justify-center bg-indigo-500 text-white relative z-10 title-font font-medium text-sm">
-              1
-            </div>
-            <div className="flex-grow flex sm:items-center items-start flex-col sm:flex-row">
-              <div className="flex-grow sm:pl-6 mt-6 sm:mt-0">
-                <p className="leading-relaxed">About</p>
-              </div>
-            </div>
-          </div>
-          <div className="flex relative py-3 sm:items-center md:w-2/3 mx-auto">
-            <div className="h-full w-6 absolute inset-0 flex items-center justify-center">
-              <div className="h-full w-1 bg-gray-200 pointer-events-none"></div>
-            </div>
-            <div className="flex-shrink-0 w-6 h-6 rounded-full mt-10 sm:mt-0 inline-flex items-center justify-center bg-indigo-500 text-white relative z-10 title-font font-medium text-sm">
-              2
-            </div>
-            <div className="flex-grow flex sm:items-center items-start flex-col sm:flex-row">
-              <div className="flex-grow sm:pl-6 mt-6 sm:mt-0">
-                <p className="leading-relaxed">About</p>
-              </div>
-            </div>
-          </div>
-          <div className="flex relative py-3 sm:items-center md:w-2/3 mx-auto">
-            <div className="h-full w-6 absolute inset-0 flex items-center justify-center">
-              <div className="h-full w-1 bg-gray-200 pointer-events-none"></div>
-            </div>
-            <div className="flex-shrink-0 w-6 h-6 rounded-full mt-10 sm:mt-0 inline-flex items-center justify-center bg-indigo-500 text-white relative z-10 title-font font-medium text-sm">
-              3
-            </div>
-            <div className="flex-grow flex sm:items-center items-start flex-col sm:flex-row">
-              <div className="flex-grow sm:pl-6 mt-6 sm:mt-0">
-                <p className="leading-relaxed">About</p>
-              </div>
-            </div>
-          </div>
-          <div className="flex relative py-3 sm:items-center md:w-2/3 mx-auto">
-            <div className="h-full w-6 absolute inset-0 flex items-center justify-center">
-              <div className="h-full w-1 bg-gray-200 pointer-events-none"></div>
-            </div>
-            <div className="flex-shrink-0 w-6 h-6 rounded-full mt-10 sm:mt-0 inline-flex items-center justify-center bg-indigo-500 text-white relative z-10 title-font font-medium text-sm">
-              4
-            </div>
-            <div className="flex-grow flex sm:items-center items-start flex-col sm:flex-row">
-              <div className="flex-grow sm:pl-6 mt-6 sm:mt-0">
-                <p className="leading-relaxed">About</p>
-              </div>
-            </div>
-          </div>
-        </div>
+    <div className="w-1/6 h-full grid grid-cols-1 sticky top-4 hidden lg:block">
+      <h1 className="text-2xl font-medium mb-2">TOC</h1>
+      <section className="flex flex-col text-gray-600 body-font border-l pl-2">
+        {headingEls.map((h, i) => {
+          return (
+            <a key={i} href={`#${h.id}`} className={'py-1 text-sm hover:text-gray-900 ' + (h.nodeName === 'H2' ? '' : 'pl-3')}>
+              {h.textContent}
+            </a>
+          );
+        })}
       </section>
     </div>
   );
