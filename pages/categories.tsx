@@ -4,6 +4,7 @@ import Title from '../components/title';
 import { IPost } from '../interfaces/post.interface';
 import { GetServerSideProps } from 'next';
 import { useState } from 'react';
+import axios from '../lib/api';
 
 interface IPosts {
   title: string;
@@ -49,12 +50,16 @@ export default function Categories({ posts }: { posts: IPost[] }) {
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const res = await fetch('https://dongsun1.github.io/api/getPost');
-  const posts = await res.json();
-
-  return {
-    props: {
-      posts,
-    },
-  };
+  try {
+    const { data: posts } = await axios.get('/api/getAllPosts');
+    return {
+      props: {
+        posts,
+      },
+    };
+  } catch (error) {
+    return {
+      notFound: true,
+    };
+  }
 };

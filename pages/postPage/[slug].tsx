@@ -5,6 +5,7 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { GetServerSideProps } from 'next';
 import { ParsedUrlQuery } from 'querystring';
 import Toc from '../../components/toc';
+import axios from '../../lib/api';
 
 interface IParams extends ParsedUrlQuery {
   slug: string;
@@ -63,13 +64,17 @@ export default function PostPage({ post }: { post: IPost }) {
 }
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
-  const { slug } = params as IParams;
-  const res = await fetch(`https://dongsun1.github.io/api/getPostBySlug/${slug}`);
-  const post = await res.json();
-
-  return {
-    props: {
-      post,
-    },
-  };
+  try {
+    const { slug } = params as IParams;
+    const { data: post } = await axios.get(`/api/getPostBySlug/${slug}`);
+    return {
+      props: {
+        post,
+      },
+    };
+  } catch (error) {
+    return {
+      notFound: true,
+    };
+  }
 };

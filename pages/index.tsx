@@ -4,6 +4,7 @@ import Posts from '../components/posts';
 import Sidebar from '../components/sidebar';
 import { IPost } from '../interfaces/post.interface';
 import { useState } from 'react';
+import axios from '../lib/api';
 
 export default function Index({ posts }: { posts: IPost[] }) {
   const [changedPosts, setPosts] = useState(posts);
@@ -28,13 +29,16 @@ export default function Index({ posts }: { posts: IPost[] }) {
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const res = await fetch('https://dongsun1.github.io/api/getAllPosts');
-  const posts = await res.json();
-
-  // const posts = await getAllPosts();
-  return {
-    props: {
-      posts,
-    },
-  };
+  try {
+    const { data: posts } = await axios.get('/api/getAllPosts');
+    return {
+      props: {
+        posts,
+      },
+    };
+  } catch (error) {
+    return {
+      notFound: true,
+    };
+  }
 };

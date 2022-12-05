@@ -2,7 +2,7 @@ import fs from 'fs';
 import matter from 'gray-matter';
 import { NextApiRequest, NextApiResponse } from 'next';
 
-export default async function getAllPosts(req: NextApiRequest, res: NextApiResponse) {
+export async function getAllPosts() {
   const files = fs.readdirSync('posts');
 
   const posts = files.map((fileName) => {
@@ -18,5 +18,10 @@ export default async function getAllPosts(req: NextApiRequest, res: NextApiRespo
 
   posts.sort(({ frontMatter: { date: a } }, { frontMatter: { date: b } }) => new Date(b).getTime() - new Date(a).getTime());
 
-  return res.status(200).json(posts);
+  return posts;
+}
+
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+  const jsonData = await getAllPosts();
+  res.status(200).json(jsonData);
 }
