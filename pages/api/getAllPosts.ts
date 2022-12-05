@@ -1,7 +1,8 @@
 import fs from 'fs';
 import matter from 'gray-matter';
+import { NextApiRequest, NextApiResponse } from 'next';
 
-export const getAllPosts = async () => {
+export default async function getAllPosts(req: NextApiRequest, res: NextApiResponse) {
   const files = fs.readdirSync('posts');
 
   const posts = files.map((fileName) => {
@@ -17,13 +18,5 @@ export const getAllPosts = async () => {
 
   posts.sort(({ frontMatter: { date: a } }, { frontMatter: { date: b } }) => new Date(b).getTime() - new Date(a).getTime());
 
-  return posts;
-};
-
-export const getPostBySlug = async (slug: string) => {
-  const file = fs.readFileSync(`posts/${slug}.md`, 'utf-8');
-
-  const { data: frontMatter, content } = matter(file);
-
-  return { frontMatter, content };
-};
+  return res.status(200).json(posts);
+}

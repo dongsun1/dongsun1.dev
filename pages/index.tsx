@@ -1,9 +1,8 @@
-import { GetStaticProps } from 'next';
+import { GetServerSideProps } from 'next';
 import Title from '../components/title';
 import Posts from '../components/posts';
 import Sidebar from '../components/sidebar';
 import { IPost } from '../interfaces/post.interface';
-import { getAllPosts } from '../lib/matter-util';
 import { useState } from 'react';
 
 export default function Index({ posts }: { posts: IPost[] }) {
@@ -28,8 +27,11 @@ export default function Index({ posts }: { posts: IPost[] }) {
   );
 }
 
-export const getStaticProps: GetStaticProps = async () => {
-  const posts = await getAllPosts();
+export const getServerSideProps: GetServerSideProps = async () => {
+  const res = await fetch('https://dongsun1.github.io/api/getAllPosts');
+  const posts = await res.json();
+
+  // const posts = await getAllPosts();
   return {
     props: {
       posts,

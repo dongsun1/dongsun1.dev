@@ -2,8 +2,7 @@ import moment from 'moment';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { GetStaticPaths, GetStaticProps } from 'next';
-import { getAllPosts, getPostBySlug } from '../../lib/matter-util';
+import { GetServerSideProps } from 'next';
 import { ParsedUrlQuery } from 'querystring';
 import Toc from '../../components/toc';
 
@@ -63,28 +62,10 @@ export default function PostPage({ post }: { post: IPost }) {
   );
 }
 
-interface IPath {
-  params: {
-    slug: string;
-  };
-}
-
-export const getStaticPaths: GetStaticPaths = async () => {
-  const posts = await getAllPosts();
-  const paths = posts.reduce<IPath[]>((acc, { slug }) => {
-    acc.push({ params: { slug } });
-    return acc;
-  }, []);
-
-  return {
-    paths,
-    fallback: false,
-  };
-};
-
-export const getStaticProps: GetStaticProps = async ({ params }) => {
+export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const { slug } = params as IParams;
-  const post: IPost = await getPostBySlug(slug);
+  const res = await fetch(`https://dongsun1.github.io/api/getPostBySlug/${slug}`);
+  const post = await res.json();
 
   return {
     props: {

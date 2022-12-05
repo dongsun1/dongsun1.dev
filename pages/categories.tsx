@@ -2,8 +2,7 @@ import Category from '../components/category';
 import SideBar from '../components/sidebar';
 import Title from '../components/title';
 import { IPost } from '../interfaces/post.interface';
-import { GetStaticProps } from 'next';
-import { getAllPosts } from '../lib/matter-util';
+import { GetServerSideProps } from 'next';
 import { useState } from 'react';
 
 interface IPosts {
@@ -49,8 +48,10 @@ export default function Categories({ posts }: { posts: IPost[] }) {
   );
 }
 
-export const getStaticProps: GetStaticProps = async () => {
-  const posts = await getAllPosts();
+export const getServerSideProps: GetServerSideProps = async () => {
+  const res = await fetch('https://dongsun1.github.io/api/getPost');
+  const posts = await res.json();
+
   return {
     props: {
       posts,
