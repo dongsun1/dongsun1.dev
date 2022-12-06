@@ -31,6 +31,7 @@ export default function Index({ posts }: { posts: IPost[] }) {
 export const getServerSideProps: GetServerSideProps = async () => {
   try {
     const posts = await getAllPosts();
+
     return {
       props: {
         posts,
