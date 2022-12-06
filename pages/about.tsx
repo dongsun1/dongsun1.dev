@@ -5,7 +5,7 @@ export default function About() {
     <div className="container mx-auto">
       <Title title="About" />
       <div className="flex w-5/6 px-32">
-        <h1 className="text-3xl">About</h1>
+        <h1 className="text-3xl">김동선</h1>
       </div>
     </div>
   );
