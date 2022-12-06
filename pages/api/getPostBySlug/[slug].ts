@@ -3,7 +3,7 @@ import matter from 'gray-matter';
 import { NextApiRequest, NextApiResponse } from 'next';
 
 export async function getPostBySlug({ slug }: { slug: string }) {
-  const file = fs.readFileSync(`posts/${slug}.md`, 'utf-8');
+  const file = fs.readFileSync(`public/posts/${slug}.md`, 'utf-8');
 
   const { data: frontMatter, content } = matter(file);
 

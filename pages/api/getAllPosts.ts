@@ -3,10 +3,10 @@ import matter from 'gray-matter';
 import { NextApiRequest, NextApiResponse } from 'next';
 
 export async function getAllPosts() {
-  const files = fs.readdirSync('posts');
+  const files = fs.readdirSync('public/posts');
 
   const posts = files.map((fileName) => {
-    const file = fs.readFileSync(`posts/${fileName}`, 'utf-8');
+    const file = fs.readFileSync(`public/posts/${fileName}`, 'utf-8');
     const { data: frontMatter, content } = matter(file);
 
     return {

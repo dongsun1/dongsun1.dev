@@ -5,7 +5,6 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { GetServerSideProps } from 'next';
 import { ParsedUrlQuery } from 'querystring';
 import Toc from '../../components/toc';
-import axios from '../../lib/api';
 import { getPostBySlug } from '../api/getPostBySlug/[slug]';
 
 interface IParams extends ParsedUrlQuery {
