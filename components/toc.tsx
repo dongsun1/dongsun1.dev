@@ -1,9 +1,7 @@
-import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { getIntersectionObserver } from '../lib/observer';
 
 export default function Toc() {
-  const router = useRouter();
   const [currentId, setCurrentId] = useState<string>('');
   const [headingEls, setHeadingEls] = useState<Element[]>([]);
 
@@ -22,7 +20,7 @@ export default function Toc() {
     headingElements.map((header) => {
       observer.observe(header);
     });
-  }, [router]);
+  }, []);
 
   return (
     <div className="w-1/6 h-full grid grid-cols-1 sticky top-4 hidden lg:block">
@@ -30,7 +28,7 @@ export default function Toc() {
       <section className="flex flex-col text-gray-600 body-font border-l pl-2">
         {headingEls.map((h, i) => {
           return (
-            <a key={i} href={`#${h.id}`} className={'py-1 text-sm hover:text-gray-900 dark:hover:text-gray-300 ' + (h.nodeName === 'H2' ? '' : 'pl-3 ')}>
+            <a key={i} href={`#${h.id}`} className={'py-1 text-sm ' + (h.nodeName === 'H2' ? '' : 'pl-3 ') + (h.id === currentId ? 'text-green-500' : '')}>
               {h.textContent}
             </a>
           );

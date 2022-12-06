@@ -22,6 +22,7 @@ export const getIntersectionObserver = (setState: Dispatch<SetStateAction<string
       checkScrollDirection(prevYposition);
 
       if ((direction === 'down' && !entry.isIntersecting) || (direction === 'up' && entry.isIntersecting)) {
+        console.info(entry.target.id);
         setState(entry.target.id);
       }
     });

@@ -46,7 +46,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <Layout>
           {loading ? (
             <StyledDiv>
-              <Loader color={'#19DBB4'} loading={true} size={15} speedMultiplier={0.4} />
+              <Loader color={'rgb(34 197 94)'} loading={true} size={15} speedMultiplier={0.4} />
             </StyledDiv>
           ) : (
             <Component {...pageProps} />
