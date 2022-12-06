@@ -1,33 +1,26 @@
 import Image from 'next-image-export-optimizer';
 import Link from 'next/link';
 import Github from '../public/github.png';
+import GithubWhite from '../public/github-white.png';
+import LinkedIn from '../public/linkedin.png';
+import LinkedInWhite from '../public/linkedin-white.png';
+import { useTheme } from 'next-themes';
 
 export default function Footer() {
+  const { theme } = useTheme();
+
   return (
     <footer className="container text-gray-600 body-font mx-auto mt-auto w-full">
       <div className="container p-5 mx-auto flex items-center sm:flex-row flex-col mt-6 border-t">
         <a className="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
-          <span className="ml-3 text-xl">dongsun1 blog</span>
+          <span className="ml-3 text-xl dark:text-gray-300">dongsun1 blog</span>
         </a>
         <span className="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
-          <a className="text-gray-500">
-            <svg fill="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-5 h-5" viewBox="0 0 24 24">
-              <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
-            </svg>
-          </a>
-          <a className="ml-3 text-gray-500">
-            <svg fill="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-5 h-5" viewBox="0 0 24 24">
-              <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
-            </svg>
-          </a>
-          <a className="ml-3 text-gray-500">
-            <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-5 h-5" viewBox="0 0 24 24">
-              <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
-              <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
-            </svg>
-          </a>
-          <Link href="https://www.github.com/dongsun1" className="ml-3 text-gray-500">
-            <Image src={Github} alt="깃허브" width={16} height={16} />
+          <Link href="https://www.linkedin.com/in/%EB%8F%99%EC%84%A0-%EA%B9%80-5197ba219/" className="ml-3 flex items-centers dark:bg-white">
+            <Image src={theme === 'dark' ? LinkedInWhite : LinkedIn} alt="깃허브" width={20} height={20} />
+          </Link>
+          <Link href="https://www.github.com/dongsun1" className="ml-3 flex items-centers">
+            <Image src={theme === 'dark' ? GithubWhite : Github} alt="깃허브" width={20} height={20} />
           </Link>
         </span>
       </div>
