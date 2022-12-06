@@ -8,6 +8,7 @@ import Toc from '../../components/toc';
 import { getPostBySlug } from '../api/getPostBySlug/[slug]';
 import { vscDarkPlus, coy } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 import { useTheme } from 'next-themes';
+import Utterances from '../../components/utterances';
 
 interface IParams extends ParsedUrlQuery {
   slug: string;
@@ -62,6 +63,7 @@ export default function PostPage({ post }: { post: IPost }) {
           </ReactMarkdown>
           <Toc />
         </div>
+        <Utterances />
       </div>
     </div>
   );
@@ -69,10 +71,8 @@ export default function PostPage({ post }: { post: IPost }) {
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   try {
-    console.info('a');
     const { slug } = params as IParams;
     const post = await getPostBySlug({ slug });
-    console.info('b');
     return {
       props: {
         post,
