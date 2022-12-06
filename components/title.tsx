@@ -3,7 +3,7 @@ export default function Title({ title }: { title: string }) {
     <div className="flex flex-col items-center">
       <h1 className="text-3xl font-bold">{title}</h1>
       <div className="inline-flex justify-center items-center w-full">
-        <hr className="my-8 w-64 h-1 bg-gray-200 rounded border-0 dark:bg-gray-700" />
+        <hr className="my-8 w-64 h-1 bg-gray-200 rounded border-0 dark:bg-gray-300" />
         <div className="absolute left-1/2 px-4 bg-white -translate-x-1/2 dark:bg-gray-900">
           <svg aria-hidden="true" className="w-5 h-5 text-gray-700 dark:text-gray-300" viewBox="0 0 24 27" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path

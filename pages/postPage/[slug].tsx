@@ -6,6 +6,8 @@ import { GetServerSideProps } from 'next';
 import { ParsedUrlQuery } from 'querystring';
 import Toc from '../../components/toc';
 import { getPostBySlug } from '../api/getPostBySlug/[slug]';
+import { vscDarkPlus, coy } from 'react-syntax-highlighter/dist/cjs/styles/prism';
+import { useTheme } from 'next-themes';
 
 interface IParams extends ParsedUrlQuery {
   slug: string;
@@ -19,6 +21,8 @@ interface IPost {
 }
 
 export default function PostPage({ post }: { post: IPost }) {
+  const { theme } = useTheme();
+
   const {
     frontMatter: { category, date, title },
     content,
@@ -37,13 +41,13 @@ export default function PostPage({ post }: { post: IPost }) {
         </div>
         <div className="flex">
           <ReactMarkdown
-            className="w-5/6 prose max-w-none pr-8 prose-p:m-0 prose-pre:p-0 prose-pre:m-0 prose-pre:bg-transparent"
+            className="w-5/6 dark:prose-invert prose max-w-none pr-8 prose-p:m-0 prose-pre:p-0 prose-pre:m-0 prose-pre:bg-transparent"
             remarkPlugins={[remarkGfm]}
             components={{
               code({ node, inline, className, children, style, ...props }) {
                 const match = /language-(\w+)/.exec(className || '');
                 return !inline && match ? (
-                  <SyntaxHighlighter language={match[1]} {...props}>
+                  <SyntaxHighlighter style={theme === 'dark' ? vscDarkPlus : coy} language={match[1]} {...props}>
                     {String(children).replace(/\n$/, '')}
                   </SyntaxHighlighter>
                 ) : (

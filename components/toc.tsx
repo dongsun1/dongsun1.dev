@@ -4,7 +4,7 @@ import { getIntersectionObserver } from '../lib/observer';
 
 export default function Toc() {
   const router = useRouter();
-  const [, setCurrentId] = useState<string>('');
+  const [currentId, setCurrentId] = useState<string>('');
   const [headingEls, setHeadingEls] = useState<Element[]>([]);
 
   useEffect(() => {
@@ -30,7 +30,7 @@ export default function Toc() {
       <section className="flex flex-col text-gray-600 body-font border-l pl-2">
         {headingEls.map((h, i) => {
           return (
-            <a key={i} href={`#${h.id}`} className={'py-1 text-sm hover:text-gray-900 ' + (h.nodeName === 'H2' ? '' : 'pl-3')}>
+            <a key={i} href={`#${h.id}`} className={'py-1 text-sm hover:text-gray-900 dark:hover:text-gray-300 ' + (h.nodeName === 'H2' ? '' : 'pl-3 ')}>
               {h.textContent}
             </a>
           );

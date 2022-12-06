@@ -18,7 +18,7 @@ export default function Category({ category, posts }: ICategory) {
       {posts.map(({ title, date, slug }, index) => {
         return (
           <div key={index} className="mb-1">
-            <Link href={`/postPage/${slug}`} className="mr-2 text-base text-gray-600 hover:text-gray-900">
+            <Link href={`/postPage/${slug}`} className="mr-2 text-base text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300">
               {title}
             </Link>
             <span className="text-sm text-slate-400">- {date}</span>
