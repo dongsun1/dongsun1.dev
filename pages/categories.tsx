@@ -4,7 +4,7 @@ import Title from '../components/title';
 import { IPost } from '../interfaces/post.interface';
 import { GetServerSideProps } from 'next';
 import { useState } from 'react';
-import axios from '../lib/api';
+import { getAllPosts } from './api/getAllPosts';
 
 interface IPosts {
   title: string;
@@ -51,7 +51,7 @@ export default function Categories({ posts }: { posts: IPost[] }) {
 
 export const getServerSideProps: GetServerSideProps = async () => {
   try {
-    const { data: posts } = await axios.get('/api/getAllPosts');
+    const posts = await getAllPosts();
     return {
       props: {
         posts,

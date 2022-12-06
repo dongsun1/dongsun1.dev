@@ -6,6 +6,7 @@ import { GetServerSideProps } from 'next';
 import { ParsedUrlQuery } from 'querystring';
 import Toc from '../../components/toc';
 import axios from '../../lib/api';
+import { getPostBySlug } from '../api/getPostBySlug/[slug]';
 
 interface IParams extends ParsedUrlQuery {
   slug: string;
@@ -66,7 +67,7 @@ export default function PostPage({ post }: { post: IPost }) {
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   try {
     const { slug } = params as IParams;
-    const { data: post } = await axios.get(`/api/getPostBySlug/${slug}`);
+    const post = await getPostBySlug({ slug });
     return {
       props: {
         post,

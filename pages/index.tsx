@@ -4,7 +4,7 @@ import Posts from '../components/posts';
 import Sidebar from '../components/sidebar';
 import { IPost } from '../interfaces/post.interface';
 import { useState } from 'react';
-import axios from '../lib/api';
+import { getAllPosts } from './api/getAllPosts';
 
 export default function Index({ posts }: { posts: IPost[] }) {
   const [changedPosts, setPosts] = useState(posts);
@@ -30,7 +30,7 @@ export default function Index({ posts }: { posts: IPost[] }) {
 
 export const getServerSideProps: GetServerSideProps = async () => {
   try {
-    const { data: posts } = await axios.get('/api/getAllPosts');
+    const posts = await getAllPosts();
     return {
       props: {
         posts,
