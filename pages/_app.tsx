@@ -7,7 +7,7 @@ import NextNProgress from 'nextjs-progressbar';
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <ThemeProvider attribute="class">
+    <ThemeProvider attribute="class" defaultTheme="dark">
       <div className="h-screen">
         <Head>
           <meta name="google-site-verification" content="S5sCMf0g7PdO57UHYdEm9Mx5VYoxT12OvhsiUJU-rlk" />
