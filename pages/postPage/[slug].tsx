@@ -69,8 +69,10 @@ export default function PostPage({ post }: { post: IPost }) {
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   try {
+    console.info('a');
     const { slug } = params as IParams;
     const post = await getPostBySlug({ slug });
+    console.info('b');
     return {
       props: {
         post,
