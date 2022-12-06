@@ -9,6 +9,11 @@ export default function UtterancesComments() {
   useEffect(() => {
     if (!elementRef.current) return;
 
+    const elements = document.getElementsByClassName('utterances');
+    while (elements.length > 0) {
+      elements[0].parentNode?.removeChild(elements[0]);
+    }
+
     const scriptElem = document.createElement('script');
     scriptElem.src = 'https://utteranc.es/client.js';
     scriptElem.async = true;
@@ -20,5 +25,5 @@ export default function UtterancesComments() {
     elementRef.current.appendChild(scriptElem);
   }, []);
 
-  return <section ref={elementRef} />;
+  return <section className="border-t mt-2" ref={elementRef} />;
 }
