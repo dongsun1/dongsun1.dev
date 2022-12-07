@@ -23,7 +23,7 @@ export default function UtterancesComments() {
     scriptElem.setAttribute('label', 'blog-comment');
     scriptElem.setAttribute('theme', utterancesTheme);
     elementRef.current.appendChild(scriptElem);
-  }, []);
+  }, [utterancesTheme]);
 
   return <section className="border-t mt-2" ref={elementRef} />;
 }
