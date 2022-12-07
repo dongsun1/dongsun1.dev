@@ -17,7 +17,7 @@ export default function Footer() {
         </a>
         <span className="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
           <Link href="https://www.linkedin.com/in/%EB%8F%99%EC%84%A0-%EA%B9%80-5197ba219/" className="ml-3 flex items-centers dark:bg-white">
-            <Image src={theme === 'dark' ? LinkedInWhite : LinkedIn} alt="깃허브" width={20} height={20} />
+            <Image src={theme === 'dark' ? LinkedInWhite : LinkedIn} alt="링크드인" width={20} height={20} />
           </Link>
           <Link href="https://www.github.com/dongsun1" className="ml-3 flex items-centers">
             <Image src={theme === 'dark' ? GithubWhite : Github} alt="깃허브" width={20} height={20} />

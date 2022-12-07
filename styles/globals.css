@@ -7,5 +7,7 @@ html {
 }
 
 body {
-    font-family: 'Nanum Gothic Coding', sans-serif;
+    font-family: 'IBM Plex Sans KR', sans-serif;
+    font-size: 18px;
+    line-height: 28px;
 }
