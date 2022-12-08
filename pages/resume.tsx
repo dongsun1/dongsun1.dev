@@ -160,7 +160,7 @@ export default function About() {
       </div>
       <div className="flex flex-col mt-12">
         <h1 className="text-3xl font-bold mb-3">Awards</h1>
-        <span className="text-sm text-gray-400">2022년 3월 - 2022년 6월</span>
+        <span className="text-sm text-gray-400">2022년 6월</span>
         <Link href="https://hanghae99.spartacodingclub.kr/" className="mr-2 text-2xl underline mb-2">
           항해99
         </Link>

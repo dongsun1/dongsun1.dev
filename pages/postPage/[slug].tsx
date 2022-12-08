@@ -40,9 +40,9 @@ export default function PostPage({ post }: { post: IPost }) {
             {formatDate} | {category}
           </div>
         </div>
-        <div className="flex">
+        <div className="flex mb-8">
           <ReactMarkdown
-            className="w-5/6 dark:prose-invert prose max-w-none pr-8 prose-p:m-0 prose-pre:p-0 prose-pre:m-0 prose-pre:bg-transparent"
+            className="w-5/6 text-lg dark:prose-invert prose max-w-none pr-8 prose-p:m-0 prose-pre:p-0 prose-pre:m-0 prose-pre:bg-transparent"
             remarkPlugins={[remarkGfm]}
             components={{
               code({ node, inline, className, children, style, ...props }) {
