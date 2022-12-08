@@ -87,7 +87,7 @@ export default function About() {
         <br />
         <p>정적파일을 불러올 때 Localhost와 배포된 사이트에서 경로가 다른 문제가 생겨 path를 활용하여 해결했습니다.</p>
         <br />
-        <p>utterances를 사용할 때 테마가 바뀌면 재생성되는 문제가 있어 utterances가 있다면 제거 후 테마가 적용된 새로운 utterances를 표출했습니다.</p>
+        <p>utterances를 사용할 때 테마가 바뀌면 재생성되는 문제가 있어 utterances가 있다면 제거 후 테마가 적용된 새로운 utterances를 생성했습니다.</p>
         <br />
         <span className="text-sm text-gray-400">2022년 4월 - 2022년 6월</span>
         <div className="flex items-center">
@@ -143,10 +143,36 @@ export default function About() {
           <Link href="https://hanghae99.spartacodingclub.kr/" className="mr-2 text-2xl underline mb-2">
             항해99
           </Link>
-          <span className="text-green-500">Back-end Engineer (Node.js)</span>
         </div>
-        <p>99일간 9시부터 9시까지 공부하는 개발자 양성 교육 과정</p>
+        <p>99일간 9am부터 9pm까지 공부하는 개발자 양성 교육 과정</p>
+        <p>Node.js 프로젝트 진행</p>
+        <p>유저 피드백 수용 경험</p>
         <p>디자이너 협업 및 프로덕트 출시 경험</p>
+        <br />
+        <span className="text-sm text-gray-400">2021년 8월 - 2022년 1월</span>
+        <div className="flex">
+          <Link href="https://smhrd.or.kr/" className="mr-2 text-2xl underline mb-2">
+            스마트인재개발원
+          </Link>
+        </div>
+        <p>AI 활용을 위한 딥러닝 교육을 포함한 총 928시간의 교육 과정</p>
+        <p>JSP/Servlet, Android, Flask 프로젝트 진행</p>
+      </div>
+      <div className="flex flex-col mt-12">
+        <h1 className="text-3xl font-bold mb-3">Awards</h1>
+        <span className="text-sm text-gray-400">2022년 3월 - 2022년 6월</span>
+        <Link href="https://hanghae99.spartacodingclub.kr/" className="mr-2 text-2xl underline mb-2">
+          항해99
+        </Link>
+        <p>마피양 - 최고 프로젝트 상 수상</p>
+        <br />
+        <span className="text-sm text-gray-400">2022년 1월</span>
+        <Link href="https://smhrd.or.kr/" className="mr-2 text-2xl underline mb-2">
+          스마트인재개발원
+        </Link>
+        <p>모범상</p>
+        <p>개리커쳐 - 최종 프로젝트 우수상</p>
+        <p>Java Festival 우수상</p>
       </div>
     </div>
   );
