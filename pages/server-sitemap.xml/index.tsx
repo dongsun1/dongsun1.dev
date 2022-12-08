@@ -5,7 +5,7 @@ import { getAllPosts } from '../api/getAllPosts';
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const posts = await getAllPosts();
   const newsSitemaps = posts.map(({ slug }) => ({
-    loc: `${'https://dongsun1-dev.vercel.app/'}${slug}`,
+    loc: `${'https://dongsun1-dev.vercel.app/postPage/'}${slug}`,
     lastmod: new Date().toISOString(),
   }));
 
