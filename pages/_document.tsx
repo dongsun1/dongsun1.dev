@@ -5,6 +5,7 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
+          <meta name="google-site-verification" content="nv7qsrbYqeJ5cvSe_k2wtBI9fHhFeXIhv1ndyuNRNwM" />
           <link href="/favicon.ico" rel="shortcut icon" />
           <link rel="preconnect" href="https://fonts.googleapis.com"></link>
           <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous"></link>
