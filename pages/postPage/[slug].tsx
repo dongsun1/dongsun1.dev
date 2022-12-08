@@ -29,7 +29,7 @@ export default function PostPage({ post }: { post: IPost }) {
     content,
   } = post;
 
-  const formatDate = moment(new Date(date)).format('MMM MM, YYYY');
+  const formatDate = moment(new Date(date)).format('MMM DD, YYYY');
 
   return (
     <div className="container flex mx-auto px-16 py-8">

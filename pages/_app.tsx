@@ -20,3 +20,4 @@ export default function App({ Component, pageProps }: AppProps) {
 //TODO
 //블로그 만들기 포스팅
 //페이지네이션 useState 비동기 처리 문제 포스팅
+//모바일 반응형
