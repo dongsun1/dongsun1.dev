@@ -14,11 +14,27 @@ const paginate = (array: IPost[], page_size: number, page_number: number) => {
 };
 
 export default function Index({ posts }: { posts: IPost[] }) {
-  const { theme } = useTheme();
+  const { theme = 'dark' } = useTheme();
   const [page, setPage] = useState(1);
   const [count, setCount] = useState(Math.ceil(posts.length / 5));
   const [filteredPosts, setFilteredPosts] = useState(posts);
   const [paginationPosts, setPaginationPosts] = useState(paginate(posts, 5, 1));
+
+  const getPosts = ({ category }: { category: string }) => {
+    const getFilteredPosts = category === 'All' ? posts : posts.filter(({ frontMatter: { category: _category } }) => _category === category);
+    setFilteredPosts(getFilteredPosts);
+  };
+
+  useEffect(() => {
+    setPage(1);
+    setPaginationPosts(paginate(filteredPosts, 5, 1));
+    setCount(Math.ceil(filteredPosts.length / 5));
+  }, [filteredPosts]);
+
+  const paging = (e: any, page: number) => {
+    setPage(page);
+    setPaginationPosts(paginate(filteredPosts, 5, page));
+  };
 
   const CustomizedPagination = styled(Pagination)`
     & .MuiPaginationItem-root {
@@ -35,28 +51,8 @@ export default function Index({ posts }: { posts: IPost[] }) {
     }
   `;
 
-  const getPosts = ({ category }: { category: string }) => {
-    const filteredPosts = category === 'All' ? posts : posts.filter(({ frontMatter: { category: catg } }) => catg === category);
-    setPagination({ filteredPosts });
-  };
-
-  const setPagination = ({ filteredPosts }: { filteredPosts: IPost[] }) => {
-    setFilteredPosts(filteredPosts);
-    setPaginationPosts(paginate(filteredPosts, 5, 1));
-    setCount(Math.ceil(filteredPosts.length / 5));
-  };
-
-  useEffect(() => {
-    setPage(1);
-  }, [filteredPosts]);
-
-  const paging = (e: any, page: number) => {
-    setPage(page);
-    setPaginationPosts(paginate(filteredPosts, 5, page));
-  };
-
   return (
-    <div className="container mx-auto h-full flex flex-col">
+    <div className="container mx-auto h-full flex flex-col justify-between">
       <div>
         <Title title="Recent Posts" />
         <div className="flex px-32">
@@ -64,7 +60,7 @@ export default function Index({ posts }: { posts: IPost[] }) {
           <Sidebar posts={posts} getPosts={getPosts} />
         </div>
       </div>
-      <CustomizedPagination onChange={paging} page={page} className="flex mt-auto justify-center text-white " count={count} size="large" />
+      <CustomizedPagination onChange={paging} page={page} className="flex mt-6 justify-center text-white" count={count} size="large" />
     </div>
   );
 }
