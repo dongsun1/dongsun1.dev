@@ -1,10 +1,10 @@
-import Image from 'next-image-export-optimizer';
 import Link from 'next/link';
 import Github from '../public/github.png';
 import GithubWhite from '../public/github-white.png';
 import LinkedIn from '../public/linkedin.png';
 import LinkedInWhite from '../public/linkedin-white.png';
 import { useTheme } from 'next-themes';
+import Image from 'next/image';
 
 export default function Footer() {
   const { theme } = useTheme();
