@@ -52,7 +52,7 @@ export default function Index({ posts }: { posts: IPost[] }) {
   `;
 
   return (
-    <div className="container mx-auto h-full flex flex-col justify-between">
+    <div className="container mx-auto h-full flex flex-col justify-between" style={{ flex: 1 }}>
       <div>
         <Title title="Recent Posts" />
         <div className="flex px-32">
