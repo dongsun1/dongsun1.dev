@@ -7,12 +7,10 @@ import NextProgress from 'nextjs-progressbar';
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <ThemeProvider attribute="class" enableSystem={false} defaultTheme="dark">
-      <div className="h-screen">
-        <Layout>
-          <NextProgress color="rgb(34 197 94)" height={2} options={{ showSpinner: false }} />
-          <Component {...pageProps} />
-        </Layout>
-      </div>
+      <Layout>
+        <NextProgress color="rgb(34 197 94)" height={2} options={{ showSpinner: false }} />
+        <Component {...pageProps} />
+      </Layout>
     </ThemeProvider>
   );
 }

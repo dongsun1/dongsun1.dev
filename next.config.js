@@ -6,13 +6,6 @@ const nextConfig = {
   },
   reactStrictMode: false,
   swcMinify: true,
-  env: {
-    nextImageExportOptimizer_imageFolderPath: 'public/',
-    nextImageExportOptimizer_exportFolderPath: 'out',
-    nextImageExportOptimizer_quality: 75,
-    nextImageExportOptimizer_storePicturesInWEBP: true,
-    nextImageExportOptimizer_generateAndUseBlurImages: true,
-  },
   siteUrl: 'https://dongsun1-dev.vercel.app/',
   exclude: ['/404'],
   generateRobotsTxt: true,
