@@ -20,6 +20,12 @@ export default function About() {
           <span>le12352@gmail.com</span>
         </div>
         <div className="flex">
+          <span className="w-1/4 mb-2 font-bold">포트폴리오</span>
+          <Link className="font-bold underline" href="https://bit.ly/3zl6baa">
+            https://bit.ly/3zl6baa
+          </Link>
+        </div>
+        <div className="flex">
           <span className="w-1/4 mb-2 font-bold">소개</span>
           <div className="w-3/4">
             <p>안녕하세요. 프론트엔드 개발자 김동선입니다.</p>
@@ -31,7 +37,7 @@ export default function About() {
             <p>Socket을 활용해 마피아 게임 알고리즘 개발 경험이 있습니다. </p>
             <br />
             <p>리더로서 팀을 이끄는 것을 좋아합니다.</p>
-            <p>팀원들과 함께 길을 헤쳐나가며 완성했을 때 더욱 만족감을 느낍니다.</p>
+            <p>부트캠프와 국비학원에서의 프로젝트 리더 경험이 있습니다.</p>
           </div>
         </div>
       </div>
