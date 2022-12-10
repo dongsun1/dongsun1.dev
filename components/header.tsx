@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
 export default function Header() {
-  const { theme, setTheme } = useTheme();
+  const { theme = 'dark', setTheme } = useTheme();
 
   const [loaded, setLoaded] = useState(false);
 

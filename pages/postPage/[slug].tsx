@@ -22,7 +22,7 @@ interface IPost {
 }
 
 export default function PostPage({ post }: { post: IPost }) {
-  const { theme } = useTheme();
+  const { theme = 'dark' } = useTheme();
 
   const {
     frontMatter: { category, date, title },

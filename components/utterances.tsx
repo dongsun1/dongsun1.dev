@@ -2,7 +2,7 @@ import { useTheme } from 'next-themes';
 import { useEffect, useRef } from 'react';
 
 export default function UtterancesComments() {
-  const { theme } = useTheme();
+  const { theme = 'dark' } = useTheme();
   const elementRef = useRef<HTMLDivElement>(null);
   const utterancesTheme = theme === 'dark' ? 'github-dark' : 'github-light';
 
