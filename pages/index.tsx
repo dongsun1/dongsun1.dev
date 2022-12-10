@@ -14,6 +14,7 @@ const paginate = (array: IPost[], page_size: number, page_number: number) => {
 };
 
 export default function Index({ posts }: { posts: IPost[] }) {
+  const [windowWidth, setWindowWidth] = useState(0);
   const { theme = 'dark' } = useTheme();
   const [page, setPage] = useState(1);
   const [count, setCount] = useState(Math.ceil(posts.length / 5));
@@ -35,6 +36,19 @@ export default function Index({ posts }: { posts: IPost[] }) {
     setPage(page);
     setPaginationPosts(paginate(filteredPosts, 5, page));
   };
+
+  const resizeWindow = () => {
+    setWindowWidth(window.innerWidth);
+  };
+
+  useEffect(() => {
+    setWindowWidth(window.innerWidth);
+    window.addEventListener('resize', resizeWindow);
+    return () => {
+      window.removeEventListener('resize', resizeWindow);
+    };
+  }, [windowWidth]);
+  console.info(windowWidth);
 
   const CustomizedPagination = styled(Pagination)`
     & .MuiPaginationItem-root {
@@ -60,7 +74,13 @@ export default function Index({ posts }: { posts: IPost[] }) {
           <Sidebar posts={posts} getPosts={getPosts} />
         </div>
       </div>
-      <CustomizedPagination onChange={paging} page={page} className="flex mt-6 justify-center text-white" count={count} size="large" />
+      <CustomizedPagination
+        onChange={paging}
+        page={page}
+        className="flex mt-6 justify-center text-white w-full"
+        count={count}
+        size={windowWidth < 640 ? 'small' : 'large'}
+      />
     </div>
   );
 }
