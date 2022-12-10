@@ -3,7 +3,7 @@ import Title from '../components/title';
 
 export default function About() {
   return (
-    <div className="container mx-auto max-w-3xl">
+    <div className="container mx-auto max-w-3xl px-4 lg:px-0">
       <Title title="Resume" />
       <div className="flex flex-col mt-10">
         <h1 className="text-3xl font-bold mb-3">Profile</h1>
@@ -95,9 +95,11 @@ export default function About() {
         <br />
         <p>utterances를 사용할 때 테마가 바뀌면 재생성되는 문제가 있어 utterances가 있다면 제거 후 테마가 적용된 새로운 utterances를 생성했습니다.</p>
         <br />
+        <p>모바일 환경에서 볼 수 있도록 반응형으로 제작했습니다.</p>
+        <br />
         <span className="text-sm text-gray-400">2022년 4월 - 2022년 6월</span>
         <div className="flex items-center">
-          <Link href="https://github.com/dongsun1/last-project-nest" className="mr-2 text-2xl underline mb-2">
+          <Link href="https://github.com/dongsun1/last-project-nest" className="mr-2 text-2xl underline mb-2 shrink-0">
             마피양
           </Link>
           <span className="text-green-500">Back-end Engineer (Node.js, Express.js, Nest.js, MongoDB)</span>
@@ -123,7 +125,7 @@ export default function About() {
         <br />
         <span className="text-sm text-gray-400">2022년 12월 - 2022년 1월</span>
         <div className="flex items-center">
-          <Link href="https://github.com/2021-SMHRD-KDT-AI-6/Gaericature-" className="mr-2 text-2xl underline mb-2">
+          <Link href="https://github.com/2021-SMHRD-KDT-AI-6/Gaericature-" className="mr-2 text-2xl underline mb-2 shrink-0">
             개리커쳐
           </Link>
           <span className="text-green-500">Android, Back-end Engineer (Android Studio, Flask, MySQL)</span>
