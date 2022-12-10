@@ -32,17 +32,17 @@ export default function PostPage({ post }: { post: IPost }) {
   const formatDate = moment(new Date(date)).format('MMM DD, YYYY');
 
   return (
-    <div className="container flex mx-auto px-16 py-8">
-      <div className="w-full px-16">
+    <div className="container flex mx-auto w-full px-4 lg:px-16 lg:py-8">
+      <div className="w-full lg:px-16">
         <div className="border-b pb-2 mb-8">
           <h1 className="text-4xl font-bold pb-2">{title}</h1>
           <div>
             {formatDate} | {category}
           </div>
         </div>
-        <div className="flex mb-8">
+        <div className="flex w-full mb-8">
           <ReactMarkdown
-            className="w-5/6 text-lg dark:prose-invert prose max-w-none pr-8 prose-p:m-0 prose-pre:p-0 prose-pre:m-0 prose-pre:bg-transparent"
+            className="w-full lg:w-5/6 text-lg dark:prose-invert prose max-w-none pr-8 prose-p:m-0 prose-pre:p-0 prose-pre:m-0 prose-pre:bg-transparent"
             remarkPlugins={[remarkGfm]}
             components={{
               code({ node, inline, className, children, style, ...props }) {

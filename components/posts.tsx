@@ -4,8 +4,8 @@ import { IPost } from '../interfaces/post.interface';
 
 export default function Posts({ posts }: { posts: IPost[] }) {
   return (
-    <section className="mt-4 text-gray-600 body-font overflow-hidden w-5/6 md:w-full">
-      <div className="container px-5 ">
+    <section className="mt-4 text-gray-600 body-font overflow-hidden w-full lg:w-5/6">
+      <div className="container px-4">
         {posts.map(({ frontMatter: { title, category, date, desc }, slug }, i) => {
           return (
             <div key={i} className="-my-8 divide-y-2 divide-gray-100">

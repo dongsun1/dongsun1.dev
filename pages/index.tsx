@@ -55,7 +55,7 @@ export default function Index({ posts }: { posts: IPost[] }) {
     <div className="container mx-auto h-full flex flex-col justify-between" style={{ flex: 1 }}>
       <div>
         <Title title="Recent Posts" />
-        <div className="flex px-32">
+        <div className="flex lg:px-32">
           <Posts posts={paginationPosts} />
           <Sidebar posts={posts} getPosts={getPosts} />
         </div>

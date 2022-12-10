@@ -37,7 +37,7 @@ export default function Categories({ posts }: { posts: IPost[] }) {
   return (
     <div className="container mx-auto">
       <Title title="Categories" />
-      <div className="flex px-32">
+      <div className="flex px-4 lg:px-32">
         <div className="flex flex-col w-5/6">
           {Object.entries(categories).map(([category, posts], index) => {
             return <Category key={index} category={category} posts={posts} />;
