@@ -9,6 +9,15 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     lastmod: new Date().toISOString(),
   }));
 
+  const pages = ['', 'resume', 'categories'];
+
+  pages.forEach((page) => {
+    newsSitemaps.push({
+      loc: `${'https://dongsun1-dev.vercel.app/postPage/'}${page}`,
+      lastmod: new Date().toISOString(),
+    });
+  });
+
   const fields = [...newsSitemaps];
 
   return getServerSideSitemap(ctx, fields);
