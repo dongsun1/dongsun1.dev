@@ -6,4 +6,4 @@ Allow: /
 Host: https://dongsun1-dev.vercel.app/
 
 # Sitemaps
-Sitemap: https://dongsun1-dev.vercel.app/sitemap.xml
+Sitemap: https://dongsun1-dev.vercel.app/server-sitemap.xml

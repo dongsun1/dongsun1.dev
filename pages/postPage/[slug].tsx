@@ -15,7 +15,7 @@ const CustomTable = styled.div`
   margin-top: 2em;
   margin-bottom: 2em;
   width: 100%;
-  overflow: scroll;
+  overflow-x: scroll;
   th {
     white-space: nowrap;
   }
