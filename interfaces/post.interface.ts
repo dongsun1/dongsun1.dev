@@ -1,8 +1,5 @@
 export interface IFrontMatter {
-  title: string;
-  date: string;
-  category: string;
-  desc: string;
+  [key: string]: string;
 }
 export interface IPost {
   frontMatter: IFrontMatter;

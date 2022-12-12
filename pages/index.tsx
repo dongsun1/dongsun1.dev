@@ -48,7 +48,6 @@ export default function Index({ posts }: { posts: IPost[] }) {
       window.removeEventListener('resize', resizeWindow);
     };
   }, [windowWidth]);
-  console.info(windowWidth);
 
   const CustomizedPagination = styled(Pagination)`
     & .MuiPaginationItem-root {
