@@ -58,7 +58,7 @@ export default function About() {
           </Link>
           을 활용하여 Json Logic을 입력할 수 있도록 개발했지만 Json Logic을 모르는 사용자는 사용할 수 없었습니다.
         </p>
-        <p>따라서 좀 더 사용자 친화적인 UI를 위해 재귀 컴포넌트와 재귀 함수를 사용하여 Combo Box로 Json Logic을 만들 수 있도록 개발했습니다.</p>
+        <p>따라서 좀 더 사용자 친화적인 UI를 위해 재귀 컴포넌트와 재귀함수를 사용하여 Combo Box로 Json Logic을 만들 수 있도록 개발했습니다.</p>
         <br />
         <h1 className="text-xl mb-1">- 시설 점검 일정</h1>
         <p>

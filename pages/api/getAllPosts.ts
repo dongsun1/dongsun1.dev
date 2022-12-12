@@ -10,8 +10,7 @@ const recursiveGetPosts = (filePath: string) => {
 
   const posts = files.reduce<IPost[]>((acc, fileName) => {
     if (!fileName.includes('.md')) {
-      const a = [...recursiveGetPosts(`${filePath}/${fileName}`)];
-      acc.push(...a);
+      acc.push(...recursiveGetPosts(`${filePath}/${fileName}`));
     } else {
       const file = fs.readFileSync(`${postsDirectory}/${filePath}/${fileName}`, 'utf-8');
       const { data: frontMatter, content } = matter(file);
