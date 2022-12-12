@@ -51,6 +51,15 @@ export default function About() {
         <p>데이터기반 시설관리 플랫폼 기업으로 프론트엔드 개발자로 합류했습니다.</p>
         <p>기획자나 디자이너가 따로 없었기 때문에 기획과 디자인에 적극적으로 참여할 수 있었습니다.</p>
         <br />
+        <h1 className="text-xl mb-1">- Json Logic</h1>
+        <p>
+          <Link className="font-bold underline" href="https://www.npmjs.com/package/jsoneditor">
+            Json Editor
+          </Link>
+          을 활용하여 Json Logic을 입력할 수 있도록 개발했지만 Json Logic을 모르는 사용자는 사용할 수 없었습니다.
+        </p>
+        <p>따라서 좀 더 사용자 친화적인 UI를 위해 재귀 컴포넌트와 재귀 함수를 사용하여 Combo Box로 Json Logic을 만들 수 있도록 개발했습니다.</p>
+        <br />
         <h1 className="text-xl mb-1">- 시설 점검 일정</h1>
         <p>
           시설 점검 일정 관리를 위해{' '}
@@ -70,9 +79,9 @@ export default function About() {
           <Link className="font-bold underline" href="https://echarts.apache.org/en/index.html">
             Echarts
           </Link>
-          를 활용하여 데이터 현황을 표출하였습니다.
+          를 활용하여 데이터 현황을 표출했습니다.
         </p>
-        <p>약 150개의 어린이집에 3~10개의 센서 데이터가 쌓이기 때문에 성능을 고려하여 페이지네이션과 hash, props를 활용하며 개발했습니다.</p>
+        <p>약 150개의 어린이집에 3~10개의 센서 데이터가 쌓이기 때문에 성능을 고려하여 페이지네이션과 hash, props를 활용하여 개발했습니다.</p>
         <br />
         <h1 className="text-xl mb-1">- 프로젝트 통합</h1>
         <p>제품을 판매한 시청/구청마다 코드가 비슷하지만 프로젝트 레파지토리가 달라서 유지보수를 위해 하나의 레파지토리로 통합했습니다.</p>
@@ -91,9 +100,10 @@ export default function About() {
         <p>나만의 블로그를 운영하기 위해 개발했습니다.</p>
         <p>SEO 최적화를 위해 SSR을 적용했고 TOC, 댓글, 다크 모드 등을 개발했습니다.</p>
         <br />
-        <p>정적파일을 불러올 때 Localhost와 배포된 사이트에서 경로가 다른 문제가 생겨 path를 활용하여 해결했습니다.</p>
-        <br />
         <p>utterances를 사용할 때 테마가 바뀌면 재생성되는 문제가 있어 utterances가 있다면 제거 후 테마가 적용된 새로운 utterances를 생성했습니다.</p>
+        <br />
+        <p>public/posts 폴더 안에 마크다운 파일들을 관리했는데 파일이 점점 많아지면서 관리하기가 힘들어졌습니다.</p>
+        <p>카테고리별로 폴더를 찢어도 모든 마크다운 파일을 찾을 수 있도록 재귀함수를 사용해서 개발했습니다.</p>
         <br />
         <p>모바일 환경에서 볼 수 있도록 반응형으로 제작했습니다.</p>
         <br />
