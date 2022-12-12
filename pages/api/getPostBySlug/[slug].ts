@@ -1,15 +1,13 @@
-import path from 'path';
-import fs from 'fs';
-import matter from 'gray-matter';
 import { NextApiRequest, NextApiResponse } from 'next';
+import { getAllPosts } from '../getAllPosts';
 
 export async function getPostBySlug({ slug }: { slug: string }) {
-  const postsDirectory = path.join(process.cwd(), 'public');
-  const file = fs.readFileSync(`${postsDirectory}/posts/${slug}.md`, 'utf-8');
+  const posts = await getAllPosts();
 
-  const { data: frontMatter, content } = matter(file);
-
-  return { frontMatter, content };
+  const post = posts.find(({ slug: _slug }) => _slug === slug);
+  if (post) {
+    return post;
+  }
 }
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {

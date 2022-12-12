@@ -1,5 +1,5 @@
 ---
-title: "[Next.js] 마크다운 파일 불어오는 법"
+title: "[Next.js] 마크다운 파일 불러오는 법"
 desc: ''
 date: 2022/12/12
 category: Next.js
@@ -115,3 +115,5 @@ SSR을 사용한다면 getServerSideProps, SSG라면 getStaticProps를 사용해
 public/posts 디렉토리내에 마크다운 파일들이 많아지면 많아질수록 관리하기가 힘들어질 것이다.
 
 이를 개선하기 위해 카테고리별로 폴더를 찢어서 관리하면 좋을 것 같다는 생각이 들었다.
+
+![public/posts](https://ifh.cc/g/1FshXp.png)

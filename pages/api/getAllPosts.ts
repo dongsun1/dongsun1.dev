@@ -30,17 +30,6 @@ const recursiveGetPosts = (filePath: string) => {
 export async function getAllPosts() {
   const posts = recursiveGetPosts('/posts');
 
-  // const posts = files.map((fileName) => {
-  //   const file = fs.readFileSync(`${postsDirectory}/posts/${fileName}`, 'utf-8');
-  //   const { data: frontMatter, content } = matter(file);
-
-  //   return {
-  //     frontMatter,
-  //     slug: fileName.replace(/\.md/, ''),
-  //     content,
-  //   };
-  // });
-
   posts.sort(({ frontMatter: { date: a } }, { frontMatter: { date: b } }) => new Date(b).getTime() - new Date(a).getTime());
 
   return posts;
