@@ -26,11 +26,12 @@ gray-matter란 마크다운 파일로 블로그를 만들경우 거의 필수로
 #
 ex) .md
 ```javascript
+---
 title: "title"
 desc: 'desc'
 date: 2022/12/12
 category: Algorithm
-
+---
 ## 컨텐츠
 ```
 
