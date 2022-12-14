@@ -2,20 +2,16 @@ import { GetServerSideProps } from 'next';
 import Title from '../components/title';
 import Posts from '../components/posts';
 import Sidebar from '../components/sidebar';
-import { styled } from '@mui/material/styles';
+import Pagination from '../components/pagination';
 import { IPost } from '../interfaces/post.interface';
 import { useEffect, useState } from 'react';
 import { getAllPosts } from './api/getAllPosts';
-import { Pagination } from '@mui/material';
-import { useTheme } from 'next-themes';
 
 const paginate = (array: IPost[], page_size: number, page_number: number) => {
   return array.slice((page_number - 1) * page_size, page_number * page_size);
 };
 
 export default function Index({ posts }: { posts: IPost[] }) {
-  const [windowWidth, setWindowWidth] = useState(0);
-  const { theme = 'dark' } = useTheme();
   const [page, setPage] = useState(1);
   const [count, setCount] = useState(Math.ceil(posts.length / 5));
   const [filteredPosts, setFilteredPosts] = useState(posts);
@@ -37,33 +33,6 @@ export default function Index({ posts }: { posts: IPost[] }) {
     setPaginationPosts(paginate(filteredPosts, 5, page));
   };
 
-  const resizeWindow = () => {
-    setWindowWidth(window.innerWidth);
-  };
-
-  useEffect(() => {
-    setWindowWidth(window.innerWidth);
-    window.addEventListener('resize', resizeWindow);
-    return () => {
-      window.removeEventListener('resize', resizeWindow);
-    };
-  }, [windowWidth]);
-
-  const CustomizedPagination = styled(Pagination)`
-    & .MuiPaginationItem-root {
-      color: ${theme === 'dark' ? 'rgb(209 213 219)' : 'rgb(17 24 39)'};
-      &:hover {
-        color: ${theme === 'dark' ? 'rgb(17 24 39)' : 'rgb(209 213 219)'};
-        background-color: ${theme === 'dark' ? 'rgb(209 213 219)' : 'rgb(17 24 39)'};
-      }
-    }
-
-    & .Mui-selected {
-      color: ${theme === 'dark' ? 'rgb(17 24 39)' : 'rgb(209 213 219)'};
-      background-color: ${theme === 'dark' ? 'rgb(209 213 219) !important' : 'rgb(17 24 39) !important'};
-    }
-  `;
-
   return (
     <div className="container mx-auto h-full flex flex-col justify-between" style={{ flex: 1 }}>
       <div>
@@ -73,13 +42,7 @@ export default function Index({ posts }: { posts: IPost[] }) {
           <Sidebar posts={posts} getPosts={getPosts} />
         </div>
       </div>
-      <CustomizedPagination
-        onChange={paging}
-        page={page}
-        className="flex mt-6 justify-center text-white w-full"
-        count={count}
-        size={windowWidth < 640 ? 'small' : 'large'}
-      />
+      <Pagination paging={paging} page={page} count={count} />
     </div>
   );
 }
