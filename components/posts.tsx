@@ -8,7 +8,7 @@ export default function Posts({ posts }: { posts: IPost[] }) {
       <div className="container px-4">
         {posts.map(({ frontMatter: { title, category, date, desc }, slug }, i) => {
           return (
-            <div key={i} className="-my-8 divide-y-2 divide-gray-100">
+            <div key={i} className="divide-y-2 divide-gray-100 h-52">
               <div className="py-8 flex flex-wrap md:flex-nowrap">
                 <div className="md:w-64 md:mb-0 mb-6 flex-shrink-0 flex flex-col">
                   <span className="font-semibold title-font text-gray-700 dark:text-gray-300">{category}</span>
@@ -18,7 +18,18 @@ export default function Posts({ posts }: { posts: IPost[] }) {
                   <Link href={`/postPage/${slug}`} className="text-2xl font-medium text-gray-900 title-font mb-2 dark:text-gray-300">
                     {title}
                   </Link>
-                  <Link href={`/postPage/${slug}`} className="leading-relaxed hover:underline dark:text-gray-400">
+                  <Link
+                    href={`/postPage/${slug}`}
+                    className="leading-relaxed hover:underline dark:text-gray-400"
+                    style={{
+                      display: '-webkit-box',
+                      WebkitBoxOrient: 'vertical',
+                      wordWrap: 'break-word',
+                      textOverflow: 'ellipsis',
+                      overflow: 'hidden',
+                      WebkitLineClamp: 4,
+                    }}
+                  >
                     {desc}
                   </Link>
                 </div>

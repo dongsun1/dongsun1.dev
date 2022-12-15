@@ -21,6 +21,9 @@ export default function App({ Component, pageProps }: AppProps) {
 }
 
 //TODO
-//블로그 만들기 포스팅
-//페이지네이션 useState 비동기 처리 문제 포스팅
-//posts 폴더 재귀함수로 가져오기
+//Posting
+//블로그 만들기
+//페이지네이션 useState 비동기 처리 문제
+
+//Develop
+//Related posts
