@@ -5,6 +5,7 @@ import { IPost } from '../interfaces/post.interface';
 import { GetServerSideProps } from 'next';
 import { useState } from 'react';
 import { getAllPosts } from './api/getAllPosts';
+import Container from '../components/container';
 
 interface IPosts {
   title: string;
@@ -35,17 +36,19 @@ export default function Categories({ posts }: { posts: IPost[] }) {
   }, {});
 
   return (
-    <div className="container mx-auto">
-      <Title title="Categories" />
-      <div className="flex px-4 lg:px-32">
-        <div className="flex flex-col w-5/6">
-          {Object.entries(categories).map(([category, posts], index) => {
-            return <Category key={index} category={category} posts={posts} />;
-          })}
+    <Container title="dongsun1 blog categories" desc="dongsun1 blog 카테고리별 조회 페이지">
+      <div className="container mx-auto">
+        <Title title="Categories" />
+        <div className="flex px-4 lg:px-32">
+          <div className="flex flex-col w-5/6">
+            {Object.entries(categories).map(([category, posts], index) => {
+              return <Category key={index} category={category} posts={posts} />;
+            })}
+          </div>
+          <SideBar posts={posts} getPosts={getPosts} />
         </div>
-        <SideBar posts={posts} getPosts={getPosts} />
       </div>
-    </div>
+    </Container>
   );
 }
 
