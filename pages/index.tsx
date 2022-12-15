@@ -6,6 +6,7 @@ import Pagination from '../components/pagination';
 import { IPost } from '../interfaces/post.interface';
 import { useEffect, useState } from 'react';
 import { getAllPosts } from './api/getAllPosts';
+import Container from '../components/container';
 
 const paginate = (array: IPost[], page_size: number, page_number: number) => {
   return array.slice((page_number - 1) * page_size, page_number * page_size);
@@ -34,16 +35,18 @@ export default function Index({ posts }: { posts: IPost[] }) {
   };
 
   return (
-    <div className="container mx-auto h-full flex flex-col justify-between" style={{ flex: 1 }}>
-      <div>
-        <Title title="Recent Posts" />
-        <div className="flex lg:px-32">
-          <Posts posts={paginationPosts} />
-          <Sidebar posts={posts} getPosts={getPosts} />
+    <Container>
+      <div className="container mx-auto h-full flex flex-col justify-between" style={{ flex: 1 }}>
+        <div>
+          <Title title="Recent Posts" />
+          <div className="flex lg:px-32">
+            <Posts posts={paginationPosts} />
+            <Sidebar posts={posts} getPosts={getPosts} />
+          </div>
         </div>
+        <Pagination paging={paging} page={page} count={count} />
       </div>
-      <Pagination paging={paging} page={page} count={count} />
-    </div>
+    </Container>
   );
 }
 
