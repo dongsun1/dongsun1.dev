@@ -2,8 +2,7 @@
 title: "[Next.js] 마크다운 파일 불러오는 법"
 desc: '오늘은 Next.js에서 마크다운 파일을 불러오는 방법에 대해 포스팅하겠다.
 나같은 경우는 public/posts 디렉토리 내에서 마크다운 파일을 관리한다.
-먼저 gray-matter를 install해준다.
-gray-matter란 마크다운 파일로 블로그를 만들경우 거의 필수로 사용되어지는 라이브러리이다.'
+먼저 gray-matter를 install해준다.'
 date: 2022/12/12
 category: Next.js
 ---
