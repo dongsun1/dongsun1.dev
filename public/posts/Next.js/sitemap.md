@@ -101,3 +101,7 @@ Sitemap: https://dongsun1-dev.vercel.app/server-sitemap.xml
 ![사이트맵제출성공](https://ifh.cc/g/vQaP6p.png)
 
 성공하더라도 검색이 가능하려면 최대 2주정도 시간이 걸린다고 한다. 아직 등록한지 얼마 안되서 검색이 잘 안되는데 좀 더 기다려봐야겠다.
+
+## Source
+- https://seo.tbwakorea.com/blog/how-to-create-and-submit-a-sitemap/
+- https://www.fronttigger.dev/2022/browser/sitemap
