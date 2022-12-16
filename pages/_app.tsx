@@ -21,9 +21,11 @@ export default function App({ Component, pageProps }: AppProps) {
 }
 
 //TODO
-//Posting
-//블로그 만들기
-//페이지네이션 useState 비동기 처리 문제
 
-//Develop
+//**Posting**
+
+//Container(meta tag)
+
+//**Develop**
+
 //Related posts
