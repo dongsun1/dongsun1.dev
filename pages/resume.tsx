@@ -14,18 +14,14 @@ export default function About() {
             <span>김동선</span>
           </div>
           <div className="flex">
-            <span className="w-1/4 mb-2 font-bold">생년월일</span>
-            <span>1997년 9월 7일</span>
+            <span className="w-1/4 mb-2 font-bold">깃허브</span>
+            <Link className="font-bold underline" href="https://github.com/dongsun1">
+              https://github.com/dongsun1
+            </Link>
           </div>
           <div className="flex">
             <span className="w-1/4 mb-2 font-bold">이메일</span>
             <span>le12352@gmail.com</span>
-          </div>
-          <div className="flex">
-            <span className="w-1/4 mb-2 font-bold">포트폴리오</span>
-            <Link className="font-bold underline" href="https://bit.ly/3zl6baa">
-              https://bit.ly/3zl6baa
-            </Link>
           </div>
           <div className="flex">
             <span className="w-1/4 mb-2 font-bold">소개</span>
