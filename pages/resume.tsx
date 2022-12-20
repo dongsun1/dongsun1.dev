@@ -14,18 +14,14 @@ export default function About() {
             <span>김동선</span>
           </div>
           <div className="flex">
-            <span className="w-1/4 mb-2 font-bold">생년월일</span>
-            <span>1997년 9월 7일</span>
+            <span className="w-1/4 mb-2 font-bold">깃허브</span>
+            <Link className="font-bold underline" href="https://github.com/dongsun1">
+              https://github.com/dongsun1
+            </Link>
           </div>
           <div className="flex">
             <span className="w-1/4 mb-2 font-bold">이메일</span>
             <span>le12352@gmail.com</span>
-          </div>
-          <div className="flex">
-            <span className="w-1/4 mb-2 font-bold">포트폴리오</span>
-            <Link className="font-bold underline" href="https://bit.ly/3zl6baa">
-              https://bit.ly/3zl6baa
-            </Link>
           </div>
           <div className="flex">
             <span className="w-1/4 mb-2 font-bold">소개</span>
@@ -37,9 +33,6 @@ export default function About() {
               <br />
               <p>어려운 문제를 해결할 때 성취감을 느끼는 것을 좋아합니다.</p>
               <p>Socket을 활용해 마피아 게임 알고리즘 개발 경험이 있습니다. </p>
-              <br />
-              <p>리더로서 팀을 이끄는 것을 좋아합니다.</p>
-              <p>부트캠프와 국비학원에서의 프로젝트 리더 경험이 있습니다.</p>
             </div>
           </div>
         </div>

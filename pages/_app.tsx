@@ -23,9 +23,7 @@ export default function App({ Component, pageProps }: AppProps) {
 //TODO
 
 //**Posting**
-
 //Container(meta tag)
 
 //**Develop**
-
 //Related posts
