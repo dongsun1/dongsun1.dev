@@ -20,10 +20,11 @@ export default function App({ Component, pageProps }: AppProps) {
   );
 }
 
-//TODO
+// TODO
 
-//**Posting**
-//Container(meta tag)
+// **Posting**
+// Container(meta tag)
+// 2022
 
-//**Develop**
-//Related posts
+// **Develop**
+// Related posts
