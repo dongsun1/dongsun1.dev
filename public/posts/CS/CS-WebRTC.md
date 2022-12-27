@@ -19,7 +19,7 @@ WebRTC란 웹 브라우저간에 플러그인의 도움 없이 서로 통신할 
 ![](https://velog.velcdn.com/images/le12352/post/efb56038-679c-414a-b4bf-2dd448e04f33/image.png)
 대략 이런 식으로 작동한다. 본래 첫 태생 자체는 P2P를 위한 통신방식이다.
 #
-그러나 아무래도 WebSocket을 이용하기 때문에 직접적으로 IP를 연결하는 방식을 차용하여 방화벼이 존재하거나 허브를(또는 라우터를) 사용하는 NAT환경에서는 연결이 불가능하다. 
+그러나 아무래도 WebSocket을 이용하기 때문에 직접적으로 IP를 연결하는 방식을 차용하여 방화벽이 존재하거나 허브를(또는 라우터를) 사용하는 NAT환경에서는 연결이 불가능하다. 
 #
 NAT환경이란 간단하게 말하자면 Wifi 환경과 같이 퍼블릭 IP가 따로 존재하고 공유기 내부에는 Private IP를 이용하여 구분할 때, 공유기에서 Public IP를 Private IP로 매핑시켜주는 환경을 말한다.
 #
@@ -28,13 +28,13 @@ NAT환경이란 간단하게 말하자면 Wifi 환경과 같이 퍼블릭 IP가 
 ## STUN서버
 STUN 은 Session Traversal Uilities for NAT의 약자이다.
 #
-NAT환경에서는 Private IP를 별도로 가지고 있기 때문에 Peer to Peer(이하 P2P) 통신이 불가능 하다. 따라서 클라이언트는 자신의 Public IP를 확인하기 위해 STUN 서버로 요청을 보내고 서버로 부터 자신의 Public IP를 받는다.
+NAT환경에서는 Private IP를 별도로 가지고 있기 때문에 Peer to Peer(이하 P2P) 통신이 불가능 하다. 따라서 클라이언트는 자신의 Public IP를 확인하기 위해 STUN 서버로 요청을 보내고 서버로부터 자신의 Public IP를 받는다.
 #
 그래서 이때부터 클라이언트는 자신이 받은 Public IP를 이용하여 시그널링을 할때 받은 그 정보를 이용해서 시그널링을 하게 한다.
 #
 다만 이 STUN으로 모든걸 해결할 수는 없는데 바로 두 Client가 같은 네트워크에 존재하고 있을때는 이것으로는 해결이 되지 않는다.
 #
-또한, NAT 환경에서는 Symmetirc NAT의 경우는 어플리케이션이 달라지면 NAT의 매핑테이블이 바뀔 수 있기 때문이다.
+또한, NAT 환경에서는 Symmetric NAT의 경우는 어플리케이션이 달라지면 NAT의 매핑테이블이 바뀔 수 있기 때문이다.
 
 ## TURN서버
 TURN 서버는 클라이언트들이 통신할 때 Public 망에 존재하는 TURN 서버를 경유하여 통신하게 된다.
