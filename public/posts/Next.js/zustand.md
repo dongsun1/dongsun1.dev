@@ -1,6 +1,9 @@
 ---
 title: '[Next.js] Zustand 사용기'
-desc: ''
+desc: '원티드 프리온보딩 사전과제를 하다가 상태관리가 필요해서 리액트 상태관리 라이브러리에 대해 알아보았다.
+대표적으로 Redux, Context Api, MobX, Recoil, Jotai 등등 있었다.
+가장 많이 사용하는 Redux는 오래된 라이브러리라 그런지 문법이나 사용법이 난해한 편이다.
+또한 Context Api는 Redux보다 간단하고 직관적이지만, Context로 전달되는 값이 변경될 때마다 해당 Context를 사용하는 모든 자손 컴포넌트가 리렌더링되는 단점이 있다.'
 date: 2023/01/03
 category: Next.js
 ---
