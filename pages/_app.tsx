@@ -24,7 +24,8 @@ export default function App({ Component, pageProps }: AppProps) {
 
 // **Posting**
 // Container(meta tag)
-// 2022
+// 2022 회고
+// CS
 
 // **Develop**
 // Related posts
