@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://dongsun1-dev.vercel.app/
+Host: https://dongsun1.dev/
 
 # Sitemaps
-Sitemap: https://dongsun1-dev.vercel.app/server-sitemap.xml
+Sitemap: https://dongsun1.dev/server-sitemap.xml
