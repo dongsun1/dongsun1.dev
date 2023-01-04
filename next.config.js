@@ -6,6 +6,13 @@ const nextConfig = {
   },
   reactStrictMode: false,
   swcMinify: true,
+  redirects: () => [
+    {
+      source: '/*',
+      destination: 'https://dongsun1.dev/',
+      permanent: true,
+    },
+  ],
 };
 
 module.exports = nextConfig;
