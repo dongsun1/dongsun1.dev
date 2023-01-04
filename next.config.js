@@ -8,7 +8,7 @@ const nextConfig = {
   swcMinify: true,
   redirects: () => [
     {
-      source: '/*',
+      source: 'https://dongsun1-dev.vercel.app/',
       destination: 'https://dongsun1.dev/',
       permanent: true,
     },
