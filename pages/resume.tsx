@@ -26,13 +26,16 @@ export default function About() {
           <div className="flex">
             <span className="w-1/4 mb-2 font-bold">소개</span>
             <div className="w-3/4">
-              <p>안녕하세요. 프론트엔드 개발자 김동선입니다.</p>
+              <p>습득력이 좋은 주니어 개발자 김동선입니다.</p>
+              <p>남들보다 빠르게 습득하고 적용하는 빠른 개발 능력이 있습니다.</p>
+              <p>항상 예정된 기간보다 빠르고 정확하게 끝냅니다.</p>
               <br />
-              <p>코드의 가독성과 성능을 생각하며 개발합니다.</p>
-              <p>자료구조를 이해하고 적용하여 성능 개선한 경험이 있습니다.</p>
+              <p>자료구조를 활용한 성능 개선과 코드 리펙토링을 좋아합니다.</p>
+              <p>효율적이고 알아보기 쉬운 코드를 짜는 개발자가 잘하는 개발자라고 생각합니다.</p>
               <br />
-              <p>어려운 문제를 해결할 때 성취감을 느끼는 것을 좋아합니다.</p>
-              <p>Socket을 활용해 마피아 게임 알고리즘 개발 경험이 있습니다. </p>
+              <p>유저 친화적인 개발을 지향합니다.</p>
+              <p>직접적인 피드백을 받아 개선한 경험이 다수 있습니다.</p>
+              <p></p>
             </div>
           </div>
         </div>
@@ -147,27 +150,12 @@ export default function About() {
             · 가입 회원 수 <span className="font-bold">244</span>명, 설문조사 <span className="font-bold">57</span>건, 평점{' '}
             <span className="font-bold">4.54</span>
           </p>
-          {/* <br />
-          <span className="text-sm text-gray-400">2022년 12월 - 2022년 1월</span>
-          <div className="flex items-center">
-            <Link href="https://github.com/2021-SMHRD-KDT-AI-6/Gaericature-" className="mr-2 text-2xl underline mb-2 shrink-0">
-              개리커쳐
-            </Link>
-            <span className="text-green-500">Android, Back-end Engineer (Android Studio, Flask, MySQL)</span>
-          </div>
-          <div className="flex">
-            <Link href="https://github.com/2021-SMHRD-KDT-AI-6/Gaericature-" className="mr-1 underline mb-2">
-              시연영상
-            </Link>
-            <span>/</span>
-            <Link href="http://www.aitimes.com/news/articleView.html?idxno=143094" className="ml-1 underline mb-2">
-              기사
-            </Link>
-          </div>
-          <p>딥러닝 모델을 사용하여 강아지를 캐릭터화 시켜주는 앱 프로젝트입니다.</p>
-          <p>캐릭터화 된 사진을 적용한 굿즈를 판매하는 페이지, 장바구니 등을 개발했습니다.</p>
-          <br />
-          <p>서버와 이미지를 주고 받을 때 용량이 너무 커서 통신이 안되는 문제가 생겨 Bitmap 리사이징을 통해 해결했습니다.</p> */}
+        </div>
+        <div className="flex flex-col mt-12">
+          <h1 className="text-3xl font-bold mb-3 text-[#0087cb]">Skill</h1>
+          <p>· Frontend: JavaScript, TypeScript, Nuxt.js, Next.js</p>
+          <p>· Backend: Node.js, AWS (EC2, S3)</p>
+          <p>· Database: MongoDB</p>
         </div>
         <div className="flex flex-col mt-12">
           <h1 className="text-3xl font-bold mb-3 text-[#0087cb]">Education</h1>
