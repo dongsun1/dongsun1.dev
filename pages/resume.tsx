@@ -50,9 +50,9 @@ export default function About() {
           </div>
           <p>스마트시티, 스마트빌리지 등등 미래도시를 만드는 스마트도시 솔루션 기업</p>
           <br />
-          <div className="flex">
-            <h1 className="text-xl mb-1 w-52 font-bold shrink-0">Json Logic</h1>
-            <div>
+          <div className="flex flex-col md:flex-row">
+            <h1 className="text-xl mb-2 w-full md:w-1/4 font-bold shrink-0">Json Logic</h1>
+            <div className="w-full md:w-3/4">
               <p>
                 ·{' '}
                 <Link className="font-bold underline" href="https://www.npmjs.com/package/jsoneditor">
@@ -66,9 +66,9 @@ export default function About() {
             </div>
           </div>
           <br />
-          <div className="flex">
-            <h1 className="text-xl mb-1 w-52 font-bold shrink-0">시설 점검 일정</h1>
-            <div>
+          <div className="flex flex-col md:flex-row">
+            <h1 className="text-xl mb-2 w-full md:w-1/4 font-bold shrink-0">시설 점검 일정</h1>
+            <div className="w-full md:w-3/4">
               <p>
                 ·{' '}
                 <Link className="font-bold underline" href="https://fullcalendar.io/">
@@ -88,9 +88,9 @@ export default function About() {
             </div>
           </div>
           <br />
-          <div className="flex">
-            <h1 className="text-xl mb-1 w-52 font-bold shrink-0">어린이집 현황</h1>
-            <div>
+          <div className="flex flex-col md:flex-row">
+            <h1 className="text-xl mb-2 w-full md:w-1/4 font-bold shrink-0">어린이집 현황</h1>
+            <div className="w-full md:w-3/4">
               <p>
                 ·{' '}
                 <Link className="font-bold underline" href="https://echarts.apache.org/en/index.html">
