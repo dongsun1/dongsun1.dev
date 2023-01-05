@@ -60,6 +60,7 @@ export default function About() {
                 </Link>{' '}
                 사용법을 모르는 유저를 위해 <span className="font-bold">Combo Box</span>로 Json Logic을 만들 수 있도록 개선
               </p>
+              <p>· 개선 전 회사가 대신 Json Logic을 등록했지만 개선 후 유저가 등록</p>
               <p>
                 · 조건 안에 조건이 들어갈 수 있도록 <span className="font-bold">재귀 컴포넌트</span> 사용
               </p>
@@ -146,7 +147,7 @@ export default function About() {
             · Express.js로 먼저 개발 후 Nest.js로 마이그레이션 후 <span className="font-bold">테스트 코드 작성</span>
           </p>
           <p>
-            · <span className="font-bold">&quot;혼자서도 하고 싶다&quot;, &quot;친구가 없다&quot;</span> 라는 유저 피드백을 해결하기 위해{' '}
+            · <span className="font-bold">&quot;혼자서도 하고 싶다&quot;, &quot;친구가 없다&quot;</span>라는 유저 피드백을 해결하기 위해{' '}
             <span className="font-bold">AI 모드</span> 개발
           </p>
           <p>
