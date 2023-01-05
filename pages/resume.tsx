@@ -82,6 +82,9 @@ export default function About() {
               <p>
                 · Full Calendar에서 제공하는 함수를 활용하여 <span className="font-bold">Data Grid</span> 버전 개발
               </p>
+              <p>
+                · 정확한 소통과 빠른 습득력으로 개발기간 <span className="font-bold">25% 단축</span>
+              </p>
             </div>
           </div>
           <br />
@@ -97,7 +100,7 @@ export default function About() {
               </p>
               <p>· 어린이집 컴포넌트 검색, 페이지네이션, 카테고리별 조회 기능 개발</p>
               <p>
-                · 대용량 데이터 처리를 위한 Map 자료구조 활용 ⇒ <span className="font-bold">성능 7% 개선</span>
+                · 대용량 데이터 처리를 위한 <span className="font-bold">Map 자료구조</span> 활용 ⇒ <span className="font-bold">성능 7% 개선</span>
               </p>
             </div>
           </div>

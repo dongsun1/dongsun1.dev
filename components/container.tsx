@@ -19,10 +19,10 @@ export default function Container(props: any) {
         <title>{meta.title}</title>
         <meta name="robots" content="follow, index" />
         <meta content={meta.desc} name="description" />
-        <meta property="og:url" content={`https://dongsun-dev.vercel.app${router.asPath}`} />
-        <link rel="canonical" href={`https://dongsun-dev.vercel.app${router.asPath}`} />
+        <meta property="og:url" content={`https://dongsun.dev${router.asPath}`} />
+        <link rel="canonical" href={`https://dongsun.dev${router.asPath}`} />
         <meta property="og:type" content={meta.type} />
-        <meta property="og:site_name" content="Lee Robinson" />
+        <meta property="og:site_name" content="dongsun1 blog" />
         <meta property="og:description" content={meta.desc} />
         <meta property="og:title" content={meta.title} />
         <meta property="og:image" content={meta.image} />
