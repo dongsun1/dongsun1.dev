@@ -27,6 +27,7 @@ export default function Container(props: any) {
         <meta property="og:title" content={meta.title} />
         <meta property="og:image" content={meta.image} />
         {meta.date && <meta property="article:published_time" content={meta.date} />}
+        <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
       </Head>
       {children}
     </>
