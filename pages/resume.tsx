@@ -34,7 +34,7 @@ export default function About() {
               <p>효율적이고 알아보기 쉬운 코드를 짜는 개발자가 잘하는 개발자라고 생각합니다.</p>
               <br />
               <p>유저 친화적인 개발을 지향합니다.</p>
-              <p>직접적인 피드백을 받아 개선한 경험이 다수 있습니다.</p>
+              <p>피드백을 받거나 직접 개선한 경험이 있습니다.</p>
               <p></p>
             </div>
           </div>
@@ -60,7 +60,7 @@ export default function About() {
                 </Link>{' '}
                 사용법을 모르는 유저를 위해 <span className="font-bold">Combo Box</span>로 Json Logic을 만들 수 있도록 개선
               </p>
-              <p>· 개선 전 회사가 대신 Json Logic을 등록했지만 개선 후 유저가 등록</p>
+              <p>· 개선 전 회사가 대신 Json Logic을 등록했지만 개선 후 유저가 직접 등록</p>
               <p>
                 · 조건 안에 조건이 들어갈 수 있도록 <span className="font-bold">재귀 컴포넌트</span> 사용
               </p>
@@ -189,15 +189,15 @@ export default function About() {
           <Link href="https://hanghae99.spartacodingclub.kr/" className="mr-2 text-2xl underline mb-2 font-bold">
             항해99
           </Link>
-          <p>마피양 - 최고 프로젝트 상 수상</p>
+          <p>· 마피양 - 최고 프로젝트 상 수상 (13개 팀 중 1등)</p>
           <br />
           <span className="text-sm text-gray-400">2022년 1월</span>
           <Link href="https://smhrd.or.kr/" className="mr-2 text-2xl underline mb-2 font-bold">
             스마트인재개발원
           </Link>
-          <p>모범상</p>
-          <p>개리커쳐 - 최종 프로젝트 우수상</p>
-          <p>Java Festival 우수상</p>
+          <p>· 모범상 (60명 중 대표로 수상)</p>
+          <p>· 개리커쳐 - 최종 프로젝트 우수상 (4개 팀 중 2등)</p>
+          <p>· Java Festival 우수상 (6개 팀 중 2등)</p>
         </div>
       </div>
     </Container>
