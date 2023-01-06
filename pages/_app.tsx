@@ -23,7 +23,6 @@ export default function App({ Component, pageProps }: AppProps) {
 // TODO
 
 // **Posting**
-// Container(meta tag)
 // 2022 회고
 // CS
 
