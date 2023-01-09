@@ -7,7 +7,7 @@ interface Posts {
 
 export default function SideBar({ posts, getPosts }: { posts: IPost[]; getPosts: ({ category }: { category: string }) => void }) {
   const sideBar = posts.reduce<Posts>(
-    (acc, { frontMatter: { category } }) => {
+    (acc, { category }) => {
       if (!acc[category]) acc[category] = 0;
       acc[category]++;
       acc.total++;

@@ -5,21 +5,20 @@ import Sidebar from '../components/sidebar';
 import Pagination from '../components/pagination';
 import { IPost } from '../interfaces/post.interface';
 import { useEffect, useState } from 'react';
-import { getAllPosts } from './api/getAllPosts';
 import Container from '../components/container';
 
 const paginate = (array: IPost[], page_size: number, page_number: number) => {
   return array.slice((page_number - 1) * page_size, page_number * page_size);
 };
 
-export default function Index({ posts }: { posts: IPost[] }) {
+export default function Index({ posts, API_URL }: { posts: IPost[]; API_URL: string }) {
   const [page, setPage] = useState(1);
   const [count, setCount] = useState(Math.ceil(posts.length / 5));
   const [filteredPosts, setFilteredPosts] = useState(posts);
   const [paginationPosts, setPaginationPosts] = useState(paginate(posts, 5, 1));
 
   const getPosts = ({ category }: { category: string }) => {
-    const getFilteredPosts = category === 'All' ? posts : posts.filter(({ frontMatter: { category: _category } }) => _category === category);
+    const getFilteredPosts = category === 'All' ? posts : posts.filter(({ category: _category }) => _category === category);
     setFilteredPosts(getFilteredPosts);
   };
 
@@ -29,9 +28,21 @@ export default function Index({ posts }: { posts: IPost[] }) {
     setCount(Math.ceil(filteredPosts.length / 5));
   }, [filteredPosts]);
 
-  const paging = (e: any, page: number) => {
+  const paging = async (e: any, page: number) => {
     setPage(page);
-    setPaginationPosts(paginate(filteredPosts, 5, page));
+
+    const data = { page, limit: 5 * page };
+    const options = {
+      method: 'POST',
+      body: JSON.stringify(data),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+    const res = await fetch(`${API_URL}/api/getPaginationPosts`, options);
+    const { posts } = await res.json();
+
+    setPaginationPosts(posts);
   };
 
   return (
@@ -52,11 +63,23 @@ export default function Index({ posts }: { posts: IPost[] }) {
 
 export const getServerSideProps: GetServerSideProps = async () => {
   try {
-    const posts = await getAllPosts();
+    const { API_URL } = process.env;
+
+    const data = { page: 1, limit: 5 };
+    const options = {
+      method: 'POST',
+      body: JSON.stringify(data),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+    const res = await fetch(`${API_URL}/api/getPaginationPosts`, options);
+    const { posts } = await res.json();
 
     return {
       props: {
         posts,
+        API_URL,
       },
     };
   } catch (error) {

@@ -5,12 +5,13 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { GetServerSideProps } from 'next';
 import { ParsedUrlQuery } from 'querystring';
 import Toc from '../../components/toc';
-import { getPostBySlug } from '../api/getPostBySlug/[slug]';
+// import { getPostBySlug } from '../api/getPostBySlug/[slug]';
 import { vscDarkPlus, coy } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 import { useTheme } from 'next-themes';
 import Utterances from '../../components/utterances';
 import styled from '@emotion/styled';
 import Container from '../../components/container';
+import { IPost } from '../../interfaces/post.interface';
 
 const CustomTable = styled.div`
   margin-top: 2em;
@@ -29,20 +30,10 @@ interface IParams extends ParsedUrlQuery {
   slug: string;
 }
 
-interface IPost {
-  frontMatter: {
-    [key: string]: string;
-  };
-  content: string;
-}
-
 export default function PostPage({ post }: { post: IPost }) {
   const { theme = 'dark' } = useTheme();
 
-  const {
-    frontMatter: { category, date, title, desc },
-    content,
-  } = post;
+  const { category, date, title, desc, content } = post;
 
   const formatDate = moment(new Date(date)).format('MMM DD, YYYY');
 
@@ -94,7 +85,9 @@ export default function PostPage({ post }: { post: IPost }) {
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   try {
     const { slug } = params as IParams;
-    const post = await getPostBySlug({ slug });
+    const res = await fetch(new URL(`/api/getPostBySlug/${slug}`, process.env.API_URL));
+    const { post } = await res.json();
+
     return {
       props: {
         post,
