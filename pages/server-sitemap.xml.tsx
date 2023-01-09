@@ -1,5 +1,5 @@
 import { GetServerSideProps } from 'next';
-import { getAllPosts } from './api/getAllPosts';
+import { IPost } from '../interfaces/post.interface';
 
 const createSitemap = (slugs: string[]) => `<?xml version="1.0" encoding="UTF-8"?>
     <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -7,7 +7,7 @@ const createSitemap = (slugs: string[]) => `<?xml version="1.0" encoding="UTF-8"
           .map((slug) => {
             return `
                 <url>
-                    <loc>${`https://dongsun1-dev.vercel.app/${slug}`}</loc>
+                    <loc>${`https://dongsun1.dev/${slug}`}</loc>
                 </url>
             `;
           })
@@ -16,9 +16,10 @@ const createSitemap = (slugs: string[]) => `<?xml version="1.0" encoding="UTF-8"
 `;
 
 export const getServerSideProps: GetServerSideProps = async ({ res }) => {
-  const posts = await getAllPosts();
+  const { API_URL } = process.env;
+  const { posts }: { posts: IPost[] } = await (await fetch(`${API_URL}/api/getPosts`)).json();
 
-  const allPages = [...posts.map(({ slug }) => `postPage/${slug}`), ...['', 'resume', 'categories']];
+  const allPages = [...posts.map(({ _id }) => `${_id}`), ...['', 'resume', 'categories']];
 
   res.setHeader('Content-Type', 'text/xml');
   res.setHeader('Cache-Control', 'public, s-maxage=1200, stale-while-revalidate=600');
