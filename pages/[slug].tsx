@@ -4,14 +4,14 @@ import remarkGfm from 'remark-gfm';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { GetServerSideProps } from 'next';
 import { ParsedUrlQuery } from 'querystring';
-import Toc from '../../components/toc';
+import Toc from '../components/toc';
 // import { getPostBySlug } from '../api/getPostBySlug/[slug]';
 import { vscDarkPlus, coy } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 import { useTheme } from 'next-themes';
-import Utterances from '../../components/utterances';
+import Utterances from '../components/utterances';
 import styled from '@emotion/styled';
-import Container from '../../components/container';
-import { IPost } from '../../interfaces/post.interface';
+import Container from '../components/container';
+import { IPost } from '../interfaces/post.interface';
 
 const CustomTable = styled.div`
   margin-top: 2em;

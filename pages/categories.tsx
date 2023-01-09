@@ -1,37 +1,50 @@
 import Category from '../components/category';
-import SideBar from '../components/sidebar';
 import Title from '../components/title';
-import { IPost } from '../interfaces/post.interface';
+import { ICategoryCounts, IPost } from '../interfaces/post.interface';
 import { GetServerSideProps } from 'next';
 import { useState } from 'react';
-import { getAllPosts } from './api/getAllPosts';
 import Container from '../components/container';
+import Sidebar from '../components/sidebar';
 
 interface IPosts {
+  _id: string;
   title: string;
-  date: string;
+  date: Date;
   category: string;
-  desc: string;
-  slug: string;
 }
 interface ICategories {
   [key: string]: IPosts[];
 }
 
-export default function Categories({ posts }: { posts: IPost[] }) {
-  const [changedPosts, setPosts] = useState(posts);
+export default function Categories({
+  posts,
+  categoryCounts,
+  total,
+  API_URL,
+}: {
+  posts: IPost[];
+  categoryCounts: ICategoryCounts;
+  total: number;
+  API_URL: string;
+}) {
+  const [filteredPosts, setFilteredPosts] = useState(posts);
 
-  const getPosts = ({ category }: { category: string }) => {
-    if (category === 'All') setPosts(posts);
-    else {
-      const filteredPosts = posts.filter(({ frontMatter: { category: catg } }) => catg === category);
-      setPosts(filteredPosts);
-    }
+  const getPosts = async ({ category }: { category: string }) => {
+    const data = { category };
+    const options = {
+      method: 'POST',
+      body: JSON.stringify(data),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+    const { posts } = await (await fetch(`${API_URL}/api/getPosts`, options)).json();
+    setFilteredPosts(posts);
   };
 
-  const categories = changedPosts.reduce<ICategories>((acc, { frontMatter: { title, date, category, desc }, slug }) => {
+  const categories = filteredPosts.reduce<ICategories>((acc, { _id, title, date, category }) => {
     if (!acc[category]) acc[category] = [];
-    acc[category].push({ title, date, category, desc, slug });
+    acc[category].push({ _id, title, date, category });
     return acc;
   }, {});
 
@@ -45,7 +58,7 @@ export default function Categories({ posts }: { posts: IPost[] }) {
               return <Category key={index} category={category} posts={posts} />;
             })}
           </div>
-          <SideBar posts={posts} getPosts={getPosts} />
+          <Sidebar categoryCounts={categoryCounts} total={total} getPosts={getPosts} />
         </div>
       </div>
     </Container>
@@ -54,10 +67,16 @@ export default function Categories({ posts }: { posts: IPost[] }) {
 
 export const getServerSideProps: GetServerSideProps = async () => {
   try {
-    const posts = await getAllPosts();
+    const { API_URL } = process.env;
+    const { posts } = await (await fetch(`${API_URL}/api/getPosts`)).json();
+    const { categoryCounts } = await (await fetch(`${API_URL}/api/getCategory`)).json();
+
     return {
       props: {
         posts,
+        total: posts.length,
+        categoryCounts,
+        API_URL,
       },
     };
   } catch (error) {
