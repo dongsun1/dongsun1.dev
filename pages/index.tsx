@@ -89,6 +89,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
       },
     };
   } catch (error) {
+    console.error(error);
     return {
       notFound: true,
     };
