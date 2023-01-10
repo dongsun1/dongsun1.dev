@@ -4,7 +4,7 @@ const nextConfig = {
     if (!isServer) config.resolve.fallback.fs = false;
     return config;
   },
-  reactStrictMode: false,
+  reactStrictMode: true,
   swcMinify: true,
 };
 

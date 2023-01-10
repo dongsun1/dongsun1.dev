@@ -5,7 +5,7 @@ export default function SideBar({ categoryCounts, getPosts }: { categoryCounts: 
     getPosts({ category });
   };
 
-  const total = Object.entries(categoryCounts).reduce((acc, [key, value]) => (acc += value), 0);
+  const total = Object.entries(categoryCounts).reduce((acc, [, value]) => (acc += value), 0);
 
   return (
     <div className="px-5 w-1/6 hidden lg:block">

@@ -19,7 +19,8 @@ export default function Index({ posts, categoryCounts, total }: { posts: IPost[]
 
   const paging = (e: any, page: number) => {
     setPage(page);
-    router.push({ pathname: '/', query: { page, category: router.query.category } });
+    const category = router.query.category ? router.query.category : 'All';
+    router.push({ pathname: '/', query: { page, category } });
   };
 
   return (
