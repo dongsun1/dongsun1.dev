@@ -1,7 +1,11 @@
 import { ICategoryCounts } from 'interfaces/post.interface';
+import { useState } from 'react';
 
 export default function SideBar({ categoryCounts, getPosts }: { categoryCounts: ICategoryCounts; getPosts: ({ category }: { category: string }) => void }) {
+  const [selected, setSelected] = useState('All');
+
   const onClickCategory = ({ category }: { category: string }) => {
+    setSelected(category);
     getPosts({ category });
   };
 
@@ -14,7 +18,7 @@ export default function SideBar({ categoryCounts, getPosts }: { categoryCounts: 
           onClick={() => onClickCategory({ category: 'All' })}
           className="flex items-center justify-between hover:bg-slate-100 dark:hover:bg-gray-600 px-2 py-3 dark:text-gray-300"
         >
-          <span>All</span>
+          <span className={selected === 'All' ? 'text-green-500' : ''}>All</span>
           <div className="flex items-center border-0 rounded-xl px-2 py-1 text-white bg-black text-xs dark:bg-gray-300">
             <span className="dark:text-gray-900">{total}</span>
           </div>
@@ -26,7 +30,7 @@ export default function SideBar({ categoryCounts, getPosts }: { categoryCounts: 
               key={category}
               className="flex items-center justify-between hover:bg-slate-100 dark:hover:bg-gray-600 px-2 py-3 dark:text-gray-300"
             >
-              <span>{category}</span>
+              <span className={selected === category ? 'text-green-500' : ''}>{category}</span>
               <div className="flex items-center border-0 rounded-xl px-2 py-1 text-white bg-black text-xs dark:bg-gray-300">
                 <span className="dark:text-gray-900">{number}</span>
               </div>
