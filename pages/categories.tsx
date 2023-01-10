@@ -17,7 +17,7 @@ interface ICategories {
   [key: string]: IPosts[];
 }
 
-export default function Categories({ posts, categoryCounts, total }: { posts: IPost[]; categoryCounts: ICategoryCounts; total: number; API_URL: string }) {
+export default function Categories({ posts, categoryCounts }: { posts: IPost[]; categoryCounts: ICategoryCounts; API_URL: string }) {
   const router = useRouter();
 
   const getPosts = ({ category }: { category: string }) => {
@@ -40,7 +40,7 @@ export default function Categories({ posts, categoryCounts, total }: { posts: IP
               return <Category key={category} category={category} posts={posts} />;
             })}
           </div>
-          <Sidebar categoryCounts={categoryCounts} total={total} getPosts={getPosts} />
+          <Sidebar categoryCounts={categoryCounts} getPosts={getPosts} />
         </div>
       </div>
     </Container>
@@ -51,7 +51,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   try {
     const { category = 'All' } = context.query;
 
-    const { data: { posts, total } = {} } = await axios.get('/api/getPosts', {
+    const { data: { posts } = {} } = await axios.get('/api/getPosts', {
       params: { category },
     });
 
@@ -62,7 +62,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     return {
       props: {
         posts,
-        total,
         categoryCounts,
       },
     };

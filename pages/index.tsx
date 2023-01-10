@@ -9,17 +9,7 @@ import Container from '../components/container';
 import axios from '../lib/axios';
 import { useRouter } from 'next/router';
 
-export default function Index({
-  posts,
-  categoryCounts,
-  total,
-  categoryTotal,
-}: {
-  posts: IPost[];
-  categoryCounts: ICategoryCounts;
-  total: number;
-  categoryTotal: number;
-}) {
+export default function Index({ posts, categoryCounts, total }: { posts: IPost[]; categoryCounts: ICategoryCounts; total: number }) {
   const [page, setPage] = useState(1);
   const router = useRouter();
 
@@ -39,10 +29,10 @@ export default function Index({
           <Title title="Recent Posts" />
           <div className="flex lg:px-32">
             <Posts posts={posts} />
-            <Sidebar categoryCounts={categoryCounts} total={total} getPosts={getPosts} />
+            <Sidebar categoryCounts={categoryCounts} getPosts={getPosts} />
           </div>
         </div>
-        <Pagination paging={paging} page={page} count={Math.ceil(categoryTotal / 5)} />
+        <Pagination paging={paging} page={page} count={Math.ceil(total / 5)} />
       </div>
     </Container>
   );
@@ -52,7 +42,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   try {
     const { page = 1, category = 'All' } = context.query;
 
-    const { data: { posts, total, categoryTotal } = {} } = await axios.get('/api/getPaginationPosts', {
+    const { data: { posts, total } = {} } = await axios.get('/api/getPaginationPosts', {
       params: { page, category },
     });
 
@@ -65,7 +55,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
         posts,
         categoryCounts,
         total,
-        categoryTotal,
       },
     };
   } catch (error) {

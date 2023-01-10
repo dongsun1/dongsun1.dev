@@ -1,17 +1,11 @@
 import { ICategoryCounts } from '../interfaces/post.interface';
 
-export default function SideBar({
-  categoryCounts,
-  total,
-  getPosts,
-}: {
-  categoryCounts: ICategoryCounts;
-  total: number;
-  getPosts: ({ category }: { category: string }) => void;
-}) {
+export default function SideBar({ categoryCounts, getPosts }: { categoryCounts: ICategoryCounts; getPosts: ({ category }: { category: string }) => void }) {
   const onClickCategory = ({ category }: { category: string }) => {
     getPosts({ category });
   };
+
+  const total = Object.entries(categoryCounts).reduce((acc, [key, value]) => (acc += value), 0);
 
   return (
     <div className="px-5 w-1/6 hidden lg:block">
