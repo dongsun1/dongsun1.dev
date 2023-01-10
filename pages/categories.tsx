@@ -35,7 +35,7 @@ export default function Categories({ posts, categoryCounts }: { posts: IPost[]; 
       <div className="container mx-auto">
         <Title title="Categories" />
         <div className="flex px-4 lg:px-32">
-          <div className="flex flex-col w-5/6">
+          <div className="flex flex-col md:w-5/6">
             {Object.entries(categories).map(([category, posts]) => {
               return <Category key={category} category={category} posts={posts} />;
             })}
