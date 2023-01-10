@@ -35,10 +35,10 @@ export default function PostPage({ post }: { post: IPost }) {
 
   const { category, date, title, desc, content } = post;
 
-  const formatDate = moment(new Date(date)).format('MMM DD, YYYY');
+  const formatDate = moment(date).format('MMM DD, YYYY');
 
   return (
-    <Container title={title} desc={desc} date={new Date(date).toISOString()}>
+    <Container title={title} desc={desc} date={moment(date).toISOString()}>
       <div className="container flex mx-auto w-full px-4 lg:px-16 lg:py-8">
         <div className="w-full lg:px-16">
           <div className="border-b pb-2 mb-8">
