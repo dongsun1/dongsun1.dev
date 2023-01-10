@@ -12,7 +12,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const { page = 1, category } = req.query as Partial<TQuery>;
 
     const query: { category?: string } = {};
-    if (category) query.category = category;
+    if (category !== 'All') query.category = category;
 
     dbConnect();
     const posts = await Posts.find(query, { _id: 1, title: 1, desc: 1, category: 1, date: 1 })

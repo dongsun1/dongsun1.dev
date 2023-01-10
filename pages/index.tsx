@@ -7,29 +7,19 @@ import { ICategoryCounts, IPost } from '../interfaces/post.interface';
 import { useState } from 'react';
 import Container from '../components/container';
 import axios from '../lib/axios';
+import { useRouter } from 'next/router';
 
 export default function Index({ posts, categoryCounts, total }: { posts: IPost[]; categoryCounts: ICategoryCounts; total: number }) {
   const [page, setPage] = useState(1);
-  const [count, setCount] = useState(Math.ceil(total / 5));
-  const [paginationPosts, setPaginationPosts] = useState(posts);
+  const router = useRouter();
 
-  const getPosts = async ({ category }: { category: string }) => {
-    const { data: { posts, total } = {} } = await axios.get('/api/getPaginationPosts', {
-      params: { category },
-    });
-    setPage(1);
-    setCount(Math.ceil(total / 5));
-    setPaginationPosts(posts);
+  const getPosts = ({ category }: { category: string }) => {
+    router.push({ pathname: '/', query: { page, category } });
   };
 
-  const paging = async (e: any, page: number) => {
+  const paging = (e: any, page: number) => {
     setPage(page);
-
-    const { data: { posts } = {} } = await axios.get('/api/getPaginationPosts', {
-      params: { page },
-    });
-
-    setPaginationPosts(posts);
+    router.push({ pathname: '/', query: { page } });
   };
 
   return (
@@ -38,19 +28,23 @@ export default function Index({ posts, categoryCounts, total }: { posts: IPost[]
         <div>
           <Title title="Recent Posts" />
           <div className="flex lg:px-32">
-            <Posts posts={paginationPosts} />
+            <Posts posts={posts} />
             <Sidebar categoryCounts={categoryCounts} total={total} getPosts={getPosts} />
           </div>
         </div>
-        <Pagination paging={paging} page={page} count={count} />
+        <Pagination paging={paging} page={page} count={Math.ceil(total / 5)} />
       </div>
     </Container>
   );
 }
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
   try {
-    const { data: { posts, total } = {} } = await axios.get('/api/getPaginationPosts');
+    const { page = 1, category = 'All' } = context.query;
+
+    const { data: { posts, total } = {} } = await axios.get('/api/getPaginationPosts', {
+      params: { page, category },
+    });
     const { data: { categoryCounts } = {} } = await axios.get('/api/getCategory');
 
     return {

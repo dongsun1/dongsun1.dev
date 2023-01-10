@@ -17,7 +17,7 @@ export default function SideBar({
     <div className="px-5 w-1/6 hidden lg:block">
       <div className="grid grid-cols-1 divide-y sticky top-2 w-44">
         <button
-          onClick={() => onClickCategory({ category: '' })}
+          onClick={() => onClickCategory({ category: 'All' })}
           className="flex items-center justify-between hover:bg-slate-100 dark:hover:bg-gray-600 px-2 py-3 dark:text-gray-300"
         >
           <span>All</span>

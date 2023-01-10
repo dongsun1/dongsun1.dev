@@ -5,7 +5,6 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { GetServerSideProps } from 'next';
 import { ParsedUrlQuery } from 'querystring';
 import Toc from '../components/toc';
-// import { getPostBySlug } from '../api/getPostBySlug/[slug]';
 import { vscDarkPlus, coy } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 import { useTheme } from 'next-themes';
 import Utterances from '../components/utterances';
@@ -86,8 +85,6 @@ export default function PostPage({ post }: { post: IPost }) {
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   try {
     const { slug } = params as IParams;
-    if (!slug) return { notFound: true };
-
     const { data: { post } = {} } = await axios.get(`/api/getPostBySlug/${slug}`);
 
     return {
