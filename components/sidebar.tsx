@@ -1,4 +1,4 @@
-import { ICategoryCounts } from '../interfaces/post.interface';
+import { ICategoryCounts } from 'interfaces/post.interface';
 
 export default function SideBar({ categoryCounts, getPosts }: { categoryCounts: ICategoryCounts; getPosts: ({ category }: { category: string }) => void }) {
   const onClickCategory = ({ category }: { category: string }) => {

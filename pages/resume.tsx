@@ -1,6 +1,8 @@
+import dynamic from 'next/dynamic';
 import Link from 'next/link';
-import Container from '../components/container';
-import Title from '../components/title';
+
+const Container = dynamic(import('components/container'));
+const Title = dynamic(import('components/title'));
 
 export default function About() {
   return (

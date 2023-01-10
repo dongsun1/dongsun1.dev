@@ -1,11 +1,13 @@
-import Category from '../components/category';
-import Title from '../components/title';
-import { ICategoryCounts, IPost } from '../interfaces/post.interface';
+import { ICategoryCounts, IPost } from 'interfaces/post.interface';
 import { GetServerSideProps } from 'next';
-import Container from '../components/container';
-import Sidebar from '../components/sidebar';
-import axios from '../lib/axios';
+import axios from 'lib/axios';
 import { useRouter } from 'next/router';
+import dynamic from 'next/dynamic';
+
+const Category = dynamic(import('components/category'));
+const Title = dynamic(import('components/title'));
+const Container = dynamic(import('components/container'));
+const Sidebar = dynamic(import('components/sidebar'));
 
 interface IPosts {
   _id: string;

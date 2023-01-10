@@ -1,7 +1,7 @@
+import { ICategoryCounts } from 'interfaces/post.interface';
 import { NextApiRequest, NextApiResponse } from 'next';
-import { ICategoryCounts } from '../../interfaces/post.interface';
-import dbConnect from '../../schemas';
-import Posts from '../../schemas/post';
+import dbConnect from 'schemas';
+import Posts from 'schemas/post';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   try {

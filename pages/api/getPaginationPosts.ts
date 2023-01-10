@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import dbConnect from '../../schemas';
-import Posts from '../../schemas/post';
+import dbConnect from 'schemas';
+import Posts from 'schemas/post';
 
 interface TQuery {
   page: number;

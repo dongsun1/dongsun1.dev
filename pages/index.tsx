@@ -1,13 +1,15 @@
 import { GetServerSideProps } from 'next';
-import Title from '../components/title';
-import Posts from '../components/posts';
-import Sidebar from '../components/sidebar';
-import Pagination from '../components/pagination';
-import { ICategoryCounts, IPost } from '../interfaces/post.interface';
+import { ICategoryCounts, IPost } from 'interfaces/post.interface';
 import { useState } from 'react';
-import Container from '../components/container';
-import axios from '../lib/axios';
+import axios from 'lib/axios';
 import { useRouter } from 'next/router';
+import dynamic from 'next/dynamic';
+
+const Title = dynamic(import('components/title'));
+const Posts = dynamic(import('components/posts'));
+const Sidebar = dynamic(import('components/sidebar'));
+const Pagination = dynamic(import('components/pagination'));
+const Container = dynamic(import('components/container'));
 
 export default function Index({ posts, categoryCounts, total }: { posts: IPost[]; categoryCounts: ICategoryCounts; total: number }) {
   const [page, setPage] = useState(1);

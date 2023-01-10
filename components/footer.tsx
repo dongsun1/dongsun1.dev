@@ -1,7 +1,7 @@
 import Link from 'next/link';
-import Github from '../public/github.png';
-import GithubWhite from '../public/github-white.png';
-import LinkedIn from '../public/linkedin.png';
+import Github from 'public/github.png';
+import GithubWhite from 'public/github-white.png';
+import LinkedIn from 'public/linkedin.png';
 import { useTheme } from 'next-themes';
 import Image from 'next/image';
 

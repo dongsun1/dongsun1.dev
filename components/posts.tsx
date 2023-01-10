@@ -1,6 +1,6 @@
 import { NoSsr } from '@mui/material';
+import { IPost } from 'interfaces/post.interface';
 import Link from 'next/link';
-import { IPost } from '../interfaces/post.interface';
 
 export default function Posts({ posts }: { posts: IPost[] }) {
   return (
