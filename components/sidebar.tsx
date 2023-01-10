@@ -25,12 +25,12 @@ export default function SideBar({
             <span className="dark:text-gray-900">{total}</span>
           </div>
         </button>
-        {Object.entries(categoryCounts).map(([category, number], index) => {
+        {Object.entries(categoryCounts).map(([category, number]) => {
           if (category !== 'total')
             return (
               <button
                 onClick={() => onClickCategory({ category })}
-                key={index}
+                key={category}
                 className="flex items-center justify-between hover:bg-slate-100 dark:hover:bg-gray-600 px-2 py-3 dark:text-gray-300"
               >
                 <span>{category}</span>

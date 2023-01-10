@@ -23,7 +23,6 @@ export default function Index({ posts, categoryCounts, total }: { posts: IPost[]
   };
 
   const paging = async (e: any, page: number) => {
-    console.info('paging');
     setPage(page);
 
     const { data: { posts } = {} } = await axios.get('/api/getPaginationPosts', {

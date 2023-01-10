@@ -6,9 +6,9 @@ export default function Posts({ posts }: { posts: IPost[] }) {
   return (
     <section className="mt-4 text-gray-600 body-font overflow-hidden w-full lg:w-5/6">
       <div className="container px-4">
-        {posts.map(({ title, category, date, desc, _id }, i) => {
+        {posts.map(({ title, category, date, desc, _id }) => {
           return (
-            <div key={i} className="divide-y-2 divide-gray-100 h-52">
+            <div key={_id} className="divide-y-2 divide-gray-100 h-52">
               <div className="py-8 flex flex-wrap md:flex-nowrap">
                 <div className="md:w-64 md:mb-0 mb-6 flex-shrink-0 flex flex-col">
                   <span className="font-semibold title-font text-gray-700 dark:text-gray-300">{category}</span>

@@ -40,8 +40,8 @@ export default function Categories({ posts, categoryCounts, total }: { posts: IP
         <Title title="Categories" />
         <div className="flex px-4 lg:px-32">
           <div className="flex flex-col w-5/6">
-            {Object.entries(categories).map(([category, posts], index) => {
-              return <Category key={index} category={category} posts={posts} />;
+            {Object.entries(categories).map(([category, posts]) => {
+              return <Category key={category} category={category} posts={posts} />;
             })}
           </div>
           <Sidebar categoryCounts={categoryCounts} total={total} getPosts={getPosts} />
