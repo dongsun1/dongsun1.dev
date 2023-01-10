@@ -37,15 +37,15 @@ export default function Categories({ posts, categoryCounts, total }: { posts: IP
   return (
     <Container title="dongsun1 blog categories" desc="dongsun1 blog 카테고리별 조회 페이지">
       <div className="container mx-auto">
-        {/* <Title title="Categories" />
+        <Title title="Categories" />
         <div className="flex px-4 lg:px-32">
           <div className="flex flex-col w-5/6">
             {Object.entries(categories).map(([category, posts]) => {
               return <Category key={category} category={category} posts={posts} />;
             })}
           </div>
-          <Sidebar categoryCounts={categoryCounts} total={total} getPosts={getPosts} />
-        </div> */}
+          {/* <Sidebar categoryCounts={categoryCounts} total={total} getPosts={getPosts} /> */}
+        </div>
       </div>
     </Container>
   );
