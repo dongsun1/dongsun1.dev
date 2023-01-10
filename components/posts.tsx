@@ -6,9 +6,8 @@ export default function Posts({ posts }: { posts: IPost[] }) {
   return (
     <section className="mt-4 text-gray-600 body-font overflow-hidden w-full lg:w-5/6">
       <div className="container px-4">
-        {posts.map(({ title, category, date, desc, _id }) => {
-          // const formattedDate = new Date(date).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
-          const formattedDate = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: 'numeric' }).format(new Date(date));
+        {posts.map(({ _id, title, category, date, desc }) => {
+          const formattedDate = new Date(date).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
 
           return (
             <div key={_id} className="divide-y-2 divide-gray-100">

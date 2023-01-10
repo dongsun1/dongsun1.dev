@@ -1,3 +1,4 @@
+import { NoSsr } from '@mui/material';
 import Link from 'next/link';
 
 interface IPosts {
@@ -23,7 +24,9 @@ export default function Category({ category, posts }: ICategory) {
             <Link href={`/${_id}`} className="mr-2 text-base text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300">
               {title}
             </Link>
-            <span className="text-sm text-slate-400">- {formattedDate}</span>
+            <NoSsr>
+              <span className="text-sm text-slate-400">- {formattedDate}</span>
+            </NoSsr>
           </div>
         );
       })}

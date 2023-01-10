@@ -11,6 +11,7 @@ import styled from '@emotion/styled';
 import Container from '../components/container';
 import { IPost } from '../interfaces/post.interface';
 import axios from '../lib/axios';
+import { NoSsr } from '@mui/material';
 
 const CustomTable = styled.div`
   margin-top: 2em;
@@ -40,9 +41,9 @@ export default function PostPage({ post }: { post: IPost }) {
         <div className="w-full lg:px-16">
           <div className="border-b pb-2 mb-8">
             <h1 className="text-4xl font-bold pb-2">{title}</h1>
-            <div>
+            <NoSsr>
               {formattedDate} | {category}
-            </div>
+            </NoSsr>
           </div>
           <div className="flex w-full mb-8">
             <ReactMarkdown
