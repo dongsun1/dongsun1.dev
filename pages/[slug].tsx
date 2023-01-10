@@ -1,4 +1,3 @@
-import moment from 'moment';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
@@ -32,19 +31,17 @@ interface IParams extends ParsedUrlQuery {
 
 export default function PostPage({ post }: { post: IPost }) {
   const { theme = 'dark' } = useTheme();
-
   const { category, date, title, desc, content } = post;
-
-  const formatDate = moment(date).format('MMM DD, YYYY');
+  const formattedDate = new Date(date).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
 
   return (
-    <Container title={title} desc={desc} date={moment(date).toISOString()}>
+    <Container title={title} desc={desc} date={new Date(date).toISOString()}>
       <div className="container flex mx-auto w-full px-4 lg:px-16 lg:py-8">
         <div className="w-full lg:px-16">
           <div className="border-b pb-2 mb-8">
             <h1 className="text-4xl font-bold pb-2">{title}</h1>
             <div>
-              {formatDate} | {category}
+              {formattedDate} | {category}
             </div>
           </div>
           <div className="flex w-full mb-8">
