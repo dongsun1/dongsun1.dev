@@ -12,7 +12,7 @@ import Utterances from '../components/utterances';
 import styled from '@emotion/styled';
 import Container from '../components/container';
 import { IPost } from '../interfaces/post.interface';
-import axios from 'axios';
+import axios from '../lib/axios';
 
 const CustomTable = styled.div`
   margin-top: 2em;
@@ -85,11 +85,10 @@ export default function PostPage({ post }: { post: IPost }) {
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   try {
-    const { API_URL } = process.env;
     const { slug } = params as IParams;
     if (!slug) return { notFound: true };
 
-    const { data: { post } = {} } = await axios.get(`${API_URL}/api/getPostBySlug/${slug}`);
+    const { data: { post } = {} } = await axios.get(`/api/getPostBySlug/${slug}`);
 
     return {
       props: {

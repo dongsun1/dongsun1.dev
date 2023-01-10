@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from '../lib/axios';
 import { GetServerSideProps } from 'next';
 import { IPost } from '../interfaces/post.interface';
 
@@ -17,8 +17,7 @@ const createSitemap = (slugs: string[]) => `<?xml version="1.0" encoding="UTF-8"
 `;
 
 export const getServerSideProps: GetServerSideProps = async ({ res }) => {
-  const { API_URL } = process.env;
-  const { data: { posts = [] } = {} } = await axios.get<{ posts: IPost[] }>(`${API_URL}/api/getPosts`);
+  const { data: { posts = [] } = {} } = await axios.get<{ posts: IPost[] }>('/api/getPosts');
 
   const allPages = [...posts.map(({ _id }) => _id), ...['', 'resume', 'categories']];
 

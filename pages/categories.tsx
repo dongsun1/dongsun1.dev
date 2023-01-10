@@ -5,7 +5,7 @@ import { GetServerSideProps } from 'next';
 import { useState } from 'react';
 import Container from '../components/container';
 import Sidebar from '../components/sidebar';
-import axios from 'axios';
+import axios from '../lib/axios';
 
 interface IPosts {
   _id: string;
@@ -17,21 +17,11 @@ interface ICategories {
   [key: string]: IPosts[];
 }
 
-export default function Categories({
-  posts,
-  categoryCounts,
-  total,
-  API_URL,
-}: {
-  posts: IPost[];
-  categoryCounts: ICategoryCounts;
-  total: number;
-  API_URL: string;
-}) {
+export default function Categories({ posts, categoryCounts, total }: { posts: IPost[]; categoryCounts: ICategoryCounts; total: number; API_URL: string }) {
   const [filteredPosts, setFilteredPosts] = useState(posts);
 
   const getPosts = async ({ category }: { category: string }) => {
-    const { data: { posts } = {} } = await axios.get(`${API_URL}/api/getPosts`, {
+    const { data: { posts } = {} } = await axios.get('/api/getPosts', {
       params: { category },
     });
 
@@ -65,16 +55,14 @@ export default function Categories({
 
 export const getServerSideProps: GetServerSideProps = async () => {
   try {
-    const { API_URL } = process.env;
-    const { data: { posts } = {} } = await axios.get(`${API_URL}/api/getPosts`);
-    const { data: { categoryCounts } = {} } = await axios.get(`${API_URL}/api/getCategory`);
+    const { data: { posts } = {} } = await axios.get('/api/getPosts');
+    const { data: { categoryCounts } = {} } = await axios.get('/api/getCategory');
 
     return {
       props: {
         posts,
         total: posts.length,
         categoryCounts,
-        API_URL,
       },
     };
   } catch (error) {
