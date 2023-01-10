@@ -8,6 +8,7 @@ export default function Posts({ posts }: { posts: IPost[] }) {
       <div className="container px-4">
         {posts.map(({ title, category, date, desc, _id }) => {
           const formattedDate = moment(date).format('MMM DD, YYYY');
+          console.info(formattedDate);
 
           return (
             <div key={_id} className="divide-y-2 divide-gray-100">
