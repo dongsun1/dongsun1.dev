@@ -2,10 +2,10 @@ import Category from '../components/category';
 import Title from '../components/title';
 import { ICategoryCounts, IPost } from '../interfaces/post.interface';
 import { GetServerSideProps } from 'next';
-import { useState } from 'react';
 import Container from '../components/container';
 import Sidebar from '../components/sidebar';
 import axios from '../lib/axios';
+import { useRouter } from 'next/router';
 
 interface IPosts {
   _id: string;
@@ -18,17 +18,13 @@ interface ICategories {
 }
 
 export default function Categories({ posts, categoryCounts, total }: { posts: IPost[]; categoryCounts: ICategoryCounts; total: number; API_URL: string }) {
-  const [filteredPosts, setFilteredPosts] = useState(posts);
+  const router = useRouter();
 
-  const getPosts = async ({ category }: { category: string }) => {
-    const { data: { posts } = {} } = await axios.get('/api/getPosts', {
-      params: { category },
-    });
-
-    setFilteredPosts(posts);
+  const getPosts = ({ category }: { category: string }) => {
+    router.push({ pathname: '/categories', query: { category } });
   };
 
-  const categories = filteredPosts.reduce<ICategories>((acc, { _id, title, date, category }) => {
+  const categories = posts.reduce<ICategories>((acc, { _id, title, date, category }) => {
     if (!acc[category]) acc[category] = [];
     acc[category].push({ _id, title, date, category });
     return acc;
@@ -51,9 +47,14 @@ export default function Categories({ posts, categoryCounts, total }: { posts: IP
   );
 }
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
   try {
-    const { data: { posts } = {} } = await axios.get('/api/getPosts');
+    const { category = 'All' } = context.query;
+
+    const { data: { posts } = {} } = await axios.get('/api/getPosts', {
+      params: { category },
+    });
+
     const { data: { categoryCounts } = {} } = await axios.get('/api/getCategory');
 
     return {
