@@ -5,6 +5,7 @@ import { GetServerSideProps } from 'next';
 import { useState } from 'react';
 import Container from '../components/container';
 import Sidebar from '../components/sidebar';
+import axios from 'axios';
 
 interface IPosts {
   _id: string;
@@ -30,15 +31,12 @@ export default function Categories({
   const [filteredPosts, setFilteredPosts] = useState(posts);
 
   const getPosts = async ({ category }: { category: string }) => {
-    const data = { category };
-    const options = {
-      method: 'POST',
-      body: JSON.stringify(data),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    };
-    const { posts } = await (await fetch(`${API_URL}/api/getPosts`, options)).json();
+    const { data: { posts } = {} } = await axios.get(`${API_URL}/api/getPosts`, {
+      params: { category },
+    });
+
+    console.info(posts);
+
     setFilteredPosts(posts);
   };
 
@@ -68,8 +66,8 @@ export default function Categories({
 export const getServerSideProps: GetServerSideProps = async () => {
   try {
     const { API_URL } = process.env;
-    const { posts } = await (await fetch(`${API_URL}/api/getPosts`)).json();
-    const { categoryCounts } = await (await fetch(`${API_URL}/api/getCategory`)).json();
+    const { data: { posts } = {} } = await axios.get(`${API_URL}/api/getPosts`);
+    const { data: { categoryCounts } = {} } = await axios.get(`${API_URL}/api/getCategory`);
 
     return {
       props: {

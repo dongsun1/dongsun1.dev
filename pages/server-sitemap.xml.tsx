@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { GetServerSideProps } from 'next';
 import { IPost } from '../interfaces/post.interface';
 
@@ -17,9 +18,9 @@ const createSitemap = (slugs: string[]) => `<?xml version="1.0" encoding="UTF-8"
 
 export const getServerSideProps: GetServerSideProps = async ({ res }) => {
   const { API_URL } = process.env;
-  const { posts }: { posts: IPost[] } = await (await fetch(`${API_URL}/api/getPosts`)).json();
+  const { data: { posts = [] } = {} } = await axios.get<{ posts: IPost[] }>(`${API_URL}/api/getPosts`);
 
-  const allPages = [...posts.map(({ _id }) => `${_id}`), ...['', 'resume', 'categories']];
+  const allPages = [...posts.map(({ _id }) => _id), ...['', 'resume', 'categories']];
 
   res.setHeader('Content-Type', 'text/xml');
   res.setHeader('Cache-Control', 'public, s-maxage=1200, stale-while-revalidate=600');

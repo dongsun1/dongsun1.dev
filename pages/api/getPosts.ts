@@ -2,10 +2,14 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import dbConnect from '../../schemas';
 import Posts from '../../schemas/post';
 
+interface TQuery {
+  category?: string;
+}
+
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   try {
-    const { category } = req.body;
-    const query: { category?: string } = {};
+    const { category } = req.query as TQuery;
+    const query: TQuery = {};
     if (category) query.category = category;
 
     dbConnect();

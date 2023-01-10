@@ -6,6 +6,7 @@ import Pagination from '../components/pagination';
 import { ICategoryCounts, IPost } from '../interfaces/post.interface';
 import { useEffect, useState } from 'react';
 import Container from '../components/container';
+import axios from 'axios';
 
 export default function Index({ posts, categoryCounts, total, API_URL }: { posts: IPost[]; categoryCounts: ICategoryCounts; total: number; API_URL: string }) {
   const [page, setPage] = useState(1);
@@ -14,15 +15,9 @@ export default function Index({ posts, categoryCounts, total, API_URL }: { posts
   const [paginationPosts, setPaginationPosts] = useState(posts);
 
   const getPosts = async ({ category }: { category: string }) => {
-    const data = { page: 1, limit: 5, category };
-    const options = {
-      method: 'POST',
-      body: JSON.stringify(data),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    };
-    const { posts, total } = await (await fetch(`${API_URL}/api/getPaginationPosts`, options)).json();
+    const { data: { posts, total } = {} } = await axios.get(`${API_URL}/api/getPaginationPosts`, {
+      params: { category },
+    });
     setCount(Math.ceil(total / 5));
     setFilteredPosts(posts);
   };
@@ -35,16 +30,9 @@ export default function Index({ posts, categoryCounts, total, API_URL }: { posts
   const paging = async (e: any, page: number) => {
     setPage(page);
 
-    const data = { page, limit: 5 };
-    const options = {
-      method: 'POST',
-      body: JSON.stringify(data),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    };
-    const res = await fetch(`${API_URL}/api/getPaginationPosts`, options);
-    const { posts } = await res.json();
+    const { data: { posts } = {} } = await axios.get(`${API_URL}/api/getPaginationPosts`, {
+      params: { page },
+    });
 
     setPaginationPosts(posts);
   };
@@ -69,16 +57,8 @@ export const getServerSideProps: GetServerSideProps = async () => {
   try {
     const { API_URL } = process.env;
 
-    const data = { page: 1, limit: 5 };
-    const options = {
-      method: 'POST',
-      body: JSON.stringify(data),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    };
-    const { posts, total } = await (await fetch(`${API_URL}/api/getPaginationPosts`, options)).json();
-    const { categoryCounts } = await (await fetch(`${API_URL}/api/getCategory`)).json();
+    const { data: { posts, total } = {} } = await axios.get(`${API_URL}/api/getPaginationPosts`);
+    const { data: { categoryCounts } = {} } = await axios.get(`${API_URL}/api/getCategory`);
 
     return {
       props: {
