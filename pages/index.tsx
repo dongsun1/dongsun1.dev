@@ -9,17 +9,27 @@ import Container from '../components/container';
 import axios from '../lib/axios';
 import { useRouter } from 'next/router';
 
-export default function Index({ posts, categoryCounts, total }: { posts: IPost[]; categoryCounts: ICategoryCounts; total: number }) {
+export default function Index({
+  posts,
+  categoryCounts,
+  total,
+  categoryTotal,
+}: {
+  posts: IPost[];
+  categoryCounts: ICategoryCounts;
+  total: number;
+  categoryTotal: number;
+}) {
   const [page, setPage] = useState(1);
   const router = useRouter();
 
   const getPosts = ({ category }: { category: string }) => {
-    router.push({ pathname: '/', query: { page, category } });
+    router.push({ pathname: '/', query: { page: 1, category } });
   };
 
   const paging = (e: any, page: number) => {
     setPage(page);
-    router.push({ pathname: '/', query: { page } });
+    router.push({ pathname: '/', query: { page, category: router.query.category } });
   };
 
   return (
@@ -32,7 +42,7 @@ export default function Index({ posts, categoryCounts, total }: { posts: IPost[]
             <Sidebar categoryCounts={categoryCounts} total={total} getPosts={getPosts} />
           </div>
         </div>
-        <Pagination paging={paging} page={page} count={Math.ceil(total / 5)} />
+        <Pagination paging={paging} page={page} count={Math.ceil(categoryTotal / 5)} />
       </div>
     </Container>
   );
@@ -42,9 +52,12 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   try {
     const { page = 1, category = 'All' } = context.query;
 
-    const { data: { posts, total } = {} } = await axios.get('/api/getPaginationPosts', {
+    const { data: { posts, total, categoryTotal } = {} } = await axios.get('/api/getPaginationPosts', {
       params: { page, category },
     });
+
+    if (!posts.length) return { notFound: true };
+
     const { data: { categoryCounts } = {} } = await axios.get('/api/getCategory');
 
     return {
@@ -52,6 +65,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
         posts,
         categoryCounts,
         total,
+        categoryTotal,
       },
     };
   } catch (error) {

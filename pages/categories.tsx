@@ -51,16 +51,18 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   try {
     const { category = 'All' } = context.query;
 
-    const { data: { posts } = {} } = await axios.get('/api/getPosts', {
+    const { data: { posts, total } = {} } = await axios.get('/api/getPosts', {
       params: { category },
     });
+
+    if (!posts.length) return { notFound: true };
 
     const { data: { categoryCounts } = {} } = await axios.get('/api/getCategory');
 
     return {
       props: {
         posts,
-        total: posts.length,
+        total,
         categoryCounts,
       },
     };

@@ -13,9 +13,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     if (category !== 'All') query.category = category;
 
     dbConnect();
-    const allPosts = await Posts.find(query, { _id: 1, title: 1, date: 1, category: 1 });
+    const posts = await Posts.find(query, { _id: 1, title: 1, date: 1, category: 1 });
+    const total = await Posts.countDocuments();
 
-    res.status(200).json({ posts: allPosts });
+    res.status(200).json({ posts, total });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Internal server error' });

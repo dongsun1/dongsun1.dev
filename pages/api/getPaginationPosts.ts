@@ -19,9 +19,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       .skip((page - 1) * 5)
       .limit(5);
 
-    const total = await Posts.countDocuments(query);
+    const categoryTotal = await Posts.countDocuments(query);
+    const total = await Posts.countDocuments();
 
-    res.status(200).json({ posts, total });
+    res.status(200).json({ posts, total, categoryTotal });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Internal server error' });
