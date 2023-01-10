@@ -34,6 +34,8 @@ export default function Categories({ posts, categoryCounts, total }: { posts: IP
     return acc;
   }, {});
 
+  console.info(posts);
+
   return (
     <Container title="dongsun1 blog categories" desc="dongsun1 blog 카테고리별 조회 페이지">
       <div className="container mx-auto">
@@ -44,7 +46,7 @@ export default function Categories({ posts, categoryCounts, total }: { posts: IP
               return <Category key={category} category={category} posts={posts} />;
             })}
           </div>
-          {/* <Sidebar categoryCounts={categoryCounts} total={total} getPosts={getPosts} /> */}
+          <Sidebar categoryCounts={categoryCounts} total={total} getPosts={getPosts} />
         </div>
       </div>
     </Container>
