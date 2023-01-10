@@ -29,7 +29,7 @@ export default function Index({ posts, categoryCounts, total }: { posts: IPost[]
         <div>
           <Title title="Recent Posts" />
           <div className="flex lg:px-32">
-            <Posts posts={posts} />
+            {/* <Posts posts={posts} /> */}
             <Sidebar categoryCounts={categoryCounts} getPosts={getPosts} />
           </div>
         </div>

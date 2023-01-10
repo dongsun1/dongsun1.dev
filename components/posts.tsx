@@ -15,7 +15,7 @@ export default function Posts({ posts }: { posts: IPost[] }) {
                   <span className="mt-1 text-gray-500 text-sm dark:text-gray-400">{moment(new Date(date)).format('MMM DD, YYYY')}</span>
                 </div>
                 <div className="flex flex-col md:flex-grow">
-                  {/* <Link href={`/${_id}`} className="text-2xl font-medium text-gray-900 title-font mb-2 dark:text-gray-300">
+                  <Link href={`/${_id}`} className="text-2xl font-medium text-gray-900 title-font mb-2 dark:text-gray-300">
                     {title}
                   </Link>
                   <Link
@@ -31,7 +31,7 @@ export default function Posts({ posts }: { posts: IPost[] }) {
                     }}
                   >
                     {desc}
-                  </Link> */}
+                  </Link>
                 </div>
               </div>
             </div>
