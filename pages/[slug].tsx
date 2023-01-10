@@ -85,6 +85,8 @@ export default function PostPage({ post }: { post: IPost }) {
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   try {
     const { slug } = params as IParams;
+    if (!slug) return { notFound: true };
+
     const res = await fetch(new URL(`/api/getPostBySlug/${slug}`, process.env.API_URL));
     const { post } = await res.json();
 
