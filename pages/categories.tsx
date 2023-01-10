@@ -25,8 +25,6 @@ export default function Categories({ posts, categoryCounts, total }: { posts: IP
       params: { category },
     });
 
-    console.info(posts);
-
     setFilteredPosts(posts);
   };
 
