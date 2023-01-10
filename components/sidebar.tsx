@@ -20,19 +20,18 @@ export default function SideBar({ categoryCounts, getPosts }: { categoryCounts: 
           </div>
         </button>
         {Object.entries(categoryCounts).map(([category, number]) => {
-          if (category !== 'total')
-            return (
-              <button
-                onClick={() => onClickCategory({ category })}
-                key={category}
-                className="flex items-center justify-between hover:bg-slate-100 dark:hover:bg-gray-600 px-2 py-3 dark:text-gray-300"
-              >
-                <span>{category}</span>
-                <div className="flex items-center border-0 rounded-xl px-2 py-1 text-white bg-black text-xs dark:bg-gray-300">
-                  <span className="dark:text-gray-900">{number}</span>
-                </div>
-              </button>
-            );
+          return (
+            <button
+              onClick={() => onClickCategory({ category })}
+              key={category}
+              className="flex items-center justify-between hover:bg-slate-100 dark:hover:bg-gray-600 px-2 py-3 dark:text-gray-300"
+            >
+              <span>{category}</span>
+              <div className="flex items-center border-0 rounded-xl px-2 py-1 text-white bg-black text-xs dark:bg-gray-300">
+                <span className="dark:text-gray-900">{number}</span>
+              </div>
+            </button>
+          );
         })}
       </div>
     </div>
