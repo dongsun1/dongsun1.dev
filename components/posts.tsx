@@ -8,14 +8,13 @@ export default function Posts({ posts }: { posts: IPost[] }) {
       <div className="container px-4">
         {posts.map(({ title, category, date, desc, _id }) => {
           const formattedDate = moment(date).format('MMM DD, YYYY');
-          console.info(formattedDate);
 
           return (
             <div key={_id} className="divide-y-2 divide-gray-100">
               <div className="py-8 flex flex-wrap md:flex-nowrap">
                 <div className="md:w-64 md:mb-0 mb-6 flex-shrink-0 flex flex-col">
                   <div className="font-semibold title-font text-gray-700 dark:text-gray-300">{category}</div>
-                  <div className="mt-1 text-gray-500 text-sm dark:text-gray-400">{formattedDate}</div>
+                  {/* <div className="mt-1 text-gray-500 text-sm dark:text-gray-400">{formattedDate}</div> */}
                 </div>
                 <div className="flex flex-col md:flex-grow">
                   <Link href={`/${_id}`} className="text-2xl font-medium text-gray-900 title-font mb-2 dark:text-gray-300">

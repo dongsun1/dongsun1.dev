@@ -16,6 +16,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     dbConnect();
     const posts = await Posts.find(query, { _id: 1, title: 1, desc: 1, category: 1, date: 1 })
+      .sort({ date: -1 })
       .skip((page - 1) * 5)
       .limit(5);
 

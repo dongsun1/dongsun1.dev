@@ -13,7 +13,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     if (category !== 'All') query.category = category;
 
     dbConnect();
-    const posts = await Posts.find(query, { _id: 1, title: 1, date: 1, category: 1 });
+    const posts = await Posts.find(query, { _id: 1, title: 1, date: 1, category: 1 }).sort({ date: -1 });
 
     res.status(200).json({ posts });
   } catch (error) {
