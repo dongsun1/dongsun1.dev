@@ -8,7 +8,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     dbConnect();
     const categoryCounts: ICategoryCounts = {};
 
-    const categories = await Posts.find().distinct('category');
+    const categories = await Posts.find().sort({ date: -1 }).distinct('category');
     for (const category of categories) {
       const count = await Posts.countDocuments({ category });
       categoryCounts[category] = count;
