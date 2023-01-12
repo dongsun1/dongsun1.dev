@@ -23,7 +23,6 @@ const postsSchema = new Schema({
   },
 });
 
-const Posts = model('Posts', postsSchema);
-// const Posts = models.Posts || model('Posts', postsSchema);
+const Posts = models.Posts || model('Posts', postsSchema);
 
 export default Posts;
