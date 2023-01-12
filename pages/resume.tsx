@@ -122,7 +122,7 @@ export default function About() {
             · <span className="font-bold">SEO</span> 최적화를 위한 <span className="font-bold">SSR, meta tag</span> 적용
           </p>
           <p>
-            · public/posts 폴더 안에 카테고리별로 폴더를 찢어도 모든 마크다운 파일을 찾을 수 있도록 <span className="font-bold">재귀함수 사용</span>
+            · MongoDB를 통한 페이지네이션, dynamic import를 사용하여 초기 로딩 속도 <span className="font-bold">1.5s에서 0.2s로 개선</span>
           </p>
           <p>
             · 모바일 환경에서 볼 수 있도록 <span className="font-bold">반응형</span>으로 제작
