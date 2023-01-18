@@ -29,7 +29,7 @@ export default function About() {
             <span className="w-1/4 mb-2 font-bold">소개</span>
             <div className="w-3/4">
               <p>습득력이 좋은 주니어 개발자 김동선입니다.</p>
-              <p>남들보다 빠르게 습득하고 적용하는 빠른 개발 능력이 있습니다.</p>
+              <p>남들보다 빠르게 습득하고 적용하는 개발 능력이 있습니다.</p>
               <p>항상 예정된 기간보다 빠르고 정확하게 끝냅니다.</p>
               <br />
               <p>성능을 가장 중요하게 생각합니다.</p>
