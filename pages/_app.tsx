@@ -27,4 +27,5 @@ export default function App({ Component, pageProps }: AppProps) {
 // CS
 
 // **Develop**
+// React Query
 // Related posts
