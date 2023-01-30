@@ -26,7 +26,7 @@ export default function App({ Component, pageProps }: AppProps) {
 // 2022 회고
 // CS
 
-// **Develop**
+// **Development**
 // React Query
 // Search
 // Related posts
