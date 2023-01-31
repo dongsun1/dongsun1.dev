@@ -25,6 +25,7 @@ export default function App({ Component, pageProps }: AppProps) {
 // **Posting**
 // 2022 회고
 // CS
+// SSR이란?
 
 // **Development**
 // React Query
