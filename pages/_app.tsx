@@ -25,7 +25,8 @@ export default function App({ Component, pageProps }: AppProps) {
 // **Posting**
 // 2022 회고
 // CS
-// SSR이란?
+// CSR, SSR이란?
+// Next.js rendering 방식
 
 // **Development**
 // React Query
