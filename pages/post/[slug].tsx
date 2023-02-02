@@ -1,7 +1,7 @@
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { GetServerSideProps } from 'next';
+import { GetStaticPaths, GetStaticProps } from 'next';
 import { ParsedUrlQuery } from 'querystring';
 import { vscDarkPlus, coy } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 import { useTheme } from 'next-themes';
@@ -82,7 +82,18 @@ export default function PostPage({ post }: { post: IPost }) {
   );
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ params }) => {
+export const getStaticPaths: GetStaticPaths = async () => {
+  const { data: { slugs } = {} } = await axios.get('/api/getSlugs');
+
+  const paths = slugs.map((slug: string) => `/post/${slug}`);
+
+  return {
+    paths,
+    fallback: false,
+  };
+};
+
+export const getStaticProps: GetStaticProps = async ({ params }) => {
   try {
     const { slug } = params as IParams;
     const { data: { post } = {} } = await axios.get(`/api/getPostBySlug/${slug}`);

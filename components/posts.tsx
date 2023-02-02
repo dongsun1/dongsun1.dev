@@ -19,11 +19,11 @@ export default function Posts({ posts }: { posts: IPost[] }) {
                   </NoSsr>
                 </div>
                 <div className="flex flex-col md:flex-grow">
-                  <Link href={`/${_id}`} className="text-2xl font-medium text-gray-900 title-font mb-2 dark:text-gray-300">
+                  <Link href={`/post/${_id}`} className="text-2xl font-medium text-gray-900 title-font mb-2 dark:text-gray-300">
                     {title}
                   </Link>
                   <Link
-                    href={`/${_id}`}
+                    href={`/post/${_id}`}
                     className="leading-relaxed hover:underline dark:text-gray-400"
                     style={{
                       display: '-webkit-box',

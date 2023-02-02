@@ -21,7 +21,7 @@ export default function Category({ category, posts }: ICategory) {
 
         return (
           <div key={_id} className="mb-1">
-            <Link href={`/${_id}`} className="mr-2 text-base text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300">
+            <Link href={`/post/${_id}`} className="mr-2 text-base text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300">
               {title}
             </Link>
             <NoSsr>
