@@ -4,12 +4,18 @@ import { useState } from 'react';
 import axios from 'lib/axios';
 import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
+import { ParsedUrlQuery } from 'querystring';
 
 const Title = dynamic(import('components/title'));
 const Posts = dynamic(import('components/posts'));
 const Sidebar = dynamic(import('components/sidebar'));
 const Pagination = dynamic(import('components/pagination'));
 const Container = dynamic(import('components/container'));
+
+interface IParams extends ParsedUrlQuery {
+  category: string;
+  page: string;
+}
 
 export default function Index({ posts, categoryCounts, total }: { posts: IPost[]; categoryCounts: ICategoryCounts; total: number }) {
   const router = useRouter();
@@ -52,13 +58,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   try {
-    if (!params) {
-      return {
-        notFound: true,
-      };
-    }
-
-    const { category, page } = params;
+    const { category, page } = params as IParams;
 
     const { data: { posts, total } = {} } = await axios.get('/api/getPaginationPosts', {
       params: { page, category },

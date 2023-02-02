@@ -1,8 +1,9 @@
 import { ICategoryCounts, IPost } from 'interfaces/post.interface';
-import { GetServerSideProps } from 'next';
+import { GetStaticPaths, GetStaticProps } from 'next';
 import axios from 'lib/axios';
 import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
+import { ParsedUrlQuery } from 'querystring';
 
 const Category = dynamic(import('components/category'));
 const Title = dynamic(import('components/title'));
@@ -15,15 +16,20 @@ interface IPosts {
   date: Date;
   category: string;
 }
+
 interface ICategories {
   [key: string]: IPosts[];
+}
+
+interface IParams extends ParsedUrlQuery {
+  category: string;
 }
 
 export default function Categories({ posts, categoryCounts }: { posts: IPost[]; categoryCounts: ICategoryCounts; API_URL: string }) {
   const router = useRouter();
 
   const getPosts = ({ category }: { category: string }) => {
-    router.push({ pathname: '/categories', query: { category } });
+    router.push({ pathname: `/categories/${category}` });
   };
 
   const categories = posts.reduce<ICategories>((acc, { _id, title, date, category }) => {
@@ -49,9 +55,26 @@ export default function Categories({ posts, categoryCounts }: { posts: IPost[]; 
   );
 }
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
+export const getStaticPaths: GetStaticPaths = async () => {
+  const { data: { categoryCounts } = {} } = await axios.get('/api/getCategory');
+
+  const paths = Object.entries(categoryCounts).map(([category]) => {
+    return {
+      params: { category },
+    };
+  });
+
+  paths.push({ params: { category: 'All' } });
+
+  return {
+    paths,
+    fallback: false,
+  };
+};
+
+export const getStaticProps: GetStaticProps = async ({ params }) => {
   try {
-    const { category = 'All' } = context.query;
+    const { category = 'All' } = params as IParams;
 
     const { data: { posts } = {} } = await axios.get('/api/getPosts', {
       params: { category },

@@ -24,7 +24,7 @@ export default function Header() {
           <Link href="/resume" className="mr-5 hover:text-gray-400">
             RESUME
           </Link>
-          <Link href="/categories" className="mr-5 hover:text-gray-400">
+          <Link href="/categories/All" className="mr-5 hover:text-gray-400">
             CATEGORIES
           </Link>
           {loaded ? (
