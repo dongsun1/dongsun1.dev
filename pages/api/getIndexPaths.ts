@@ -24,7 +24,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       return acc;
     }, []);
 
-    paths.push({ params: { slug: ['', ''] } });
+    paths.push({ params: { slug: [] } });
 
     res.status(200).json({ paths });
   } catch (error) {

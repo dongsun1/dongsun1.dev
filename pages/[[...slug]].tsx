@@ -55,9 +55,13 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   try {
-    const { slug = [] } = params || {};
-    const category = slug.length === 2 ? slug[0] : 'All';
-    const page = slug.length === 2 ? slug[1] : '1';
+    if (!params) {
+      return {
+        notFound: true,
+      };
+    }
+
+    const [category = 'All', page = 1] = (params.slug as string[]) || [];
 
     const { data: { posts, total } = {} } = await axios.get('/api/getPaginationPosts', {
       params: { page, category },
