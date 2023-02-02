@@ -12,8 +12,10 @@ const Pagination = dynamic(import('components/pagination'));
 const Container = dynamic(import('components/container'));
 
 export default function Index({ posts, categoryCounts, total }: { posts: IPost[]; categoryCounts: ICategoryCounts; total: number }) {
-  const [page, setPage] = useState(1);
   const router = useRouter();
+  const firstPage = router.query.slug ? Number(router.query.slug[1]) : 1;
+
+  const [page, setPage] = useState(firstPage);
 
   const getPosts = ({ category }: { category: string }) => {
     setPage(1);
@@ -44,6 +46,8 @@ export default function Index({ posts, categoryCounts, total }: { posts: IPost[]
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const { data: { paths } = {} } = await axios.get('/api/getIndexPaths');
+
+  console.info(paths);
 
   return {
     paths,

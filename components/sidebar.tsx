@@ -1,8 +1,12 @@
 import { ICategoryCounts } from 'interfaces/post.interface';
+import { useRouter } from 'next/router';
 import { useState } from 'react';
 
 export default function SideBar({ categoryCounts, getPosts }: { categoryCounts: ICategoryCounts; getPosts: ({ category }: { category: string }) => void }) {
-  const [selected, setSelected] = useState('All');
+  const router = useRouter();
+  const firstSelected = router.query.slug ? router.query.slug[0] : 'All';
+
+  const [selected, setSelected] = useState(firstSelected);
 
   const onClickCategory = ({ category }: { category: string }) => {
     setSelected(category);
