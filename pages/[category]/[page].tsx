@@ -42,10 +42,29 @@ export default function Index({ posts, categoryCounts, total }: { posts: IPost[]
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const { data: { paths } = {} } = await axios.get('/api/getIndexPaths');
+  // const { data: { paths } = {} } = await axios.get('/api/getIndexPaths');
 
   return {
-    paths,
+    paths: [
+      { params: { category: 'All', page: '1' } },
+      { params: { category: 'All', page: '2' } },
+      { params: { category: 'All', page: '3' } },
+      { params: { category: 'All', page: '4' } },
+      { params: { category: 'All', page: '5' } },
+      { params: { category: 'All', page: '6' } },
+      { params: { category: 'All', page: '7' } },
+      { params: { category: 'All', page: '8' } },
+      { params: { category: 'Next.js', page: '1' } },
+      { params: { category: 'Algorithm', page: '1' } },
+      { params: { category: 'Algorithm', page: '2' } },
+      { params: { category: 'Algorithm', page: '3' } },
+      { params: { category: 'CS', page: '1' } },
+      { params: { category: 'CS', page: '2' } },
+      { params: { category: 'Hanghae99', page: '1' } },
+      { params: { category: 'Hanghae99', page: '2' } },
+      { params: { category: 'Hanghae99', page: '3' } },
+      { params: { category: 'Web', page: '1' } },
+    ],
     fallback: false,
   };
 };
