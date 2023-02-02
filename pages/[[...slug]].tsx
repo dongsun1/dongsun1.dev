@@ -1,4 +1,4 @@
-import { GetServerSideProps } from 'next';
+import { GetStaticPaths, GetStaticProps } from 'next';
 import { ICategoryCounts, IPost } from 'interfaces/post.interface';
 import { useState } from 'react';
 import axios from 'lib/axios';
@@ -16,13 +16,14 @@ export default function Index({ posts, categoryCounts, total }: { posts: IPost[]
   const router = useRouter();
 
   const getPosts = ({ category }: { category: string }) => {
-    router.push({ pathname: '/', query: { page: 1, category } });
+    setPage(1);
+    router.push({ pathname: `/${category}/${1}` });
   };
 
   const paging = (e: any, page: number) => {
     setPage(page);
-    const category = router.query.category ? router.query.category : 'All';
-    router.push({ pathname: '/', query: { page, category } });
+    const category = router.query.slug ? router.query.slug[0] : 'All';
+    router.push({ pathname: `/${category}/${page}` });
   };
 
   return (
@@ -41,9 +42,19 @@ export default function Index({ posts, categoryCounts, total }: { posts: IPost[]
   );
 }
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
+export const getStaticPaths: GetStaticPaths = async () => {
+  const { data: { paths } = {} } = await axios.get('/api/getIndexPaths');
+
+  return {
+    paths,
+    fallback: false,
+  };
+};
+
+export const getStaticProps: GetStaticProps = async ({ params: { slug = [] } = {} }) => {
   try {
-    const { page = 1, category = 'All' } = context.query;
+    const category = slug.length === 2 ? slug[0] : 'All';
+    const page = slug.length === 2 ? slug[1] : '1';
 
     const { data: { posts, total } = {} } = await axios.get('/api/getPaginationPosts', {
       params: { page, category },

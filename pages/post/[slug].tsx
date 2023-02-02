@@ -83,9 +83,7 @@ export default function PostPage({ post }: { post: IPost }) {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const { data: { slugs } = {} } = await axios.get('/api/getSlugs');
-
-  const paths = slugs.map((slug: string) => `/post/${slug}`);
+  const { data: { paths } = {} } = await axios.get('/api/getPostPaths');
 
   return {
     paths,
