@@ -44,27 +44,10 @@ export default function Index({ posts, categoryCounts, total }: { posts: IPost[]
   );
 }
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  const { data: { paths } = {} } = await axios.get('/api/getIndexPaths');
-
-  return {
-    paths,
-    fallback: false,
-  };
-};
-
-export const getStaticProps: GetStaticProps = async ({ params }) => {
+export const getStaticProps: GetStaticProps = async () => {
   try {
-    if (!params) {
-      return {
-        notFound: true,
-      };
-    }
-
-    const [category = 'All', page = 1] = (params.slug as string[]) || [];
-
     const { data: { posts, total } = {} } = await axios.get('/api/getPaginationPosts', {
-      params: { page, category },
+      params: { page: 1, category: 'All' },
     });
 
     if (!posts.length) return { notFound: true };

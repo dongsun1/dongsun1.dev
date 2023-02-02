@@ -17,14 +17,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       { All: 0 },
     );
 
-    const paths = Object.entries(categoryNum).reduce<{ params: { slug: string[] } }[]>((acc, [category, num]) => {
+    const paths = Object.entries(categoryNum).reduce<{ params: { category: string; page: string } }[]>((acc, [category, num]) => {
       for (let i = 0; i < Math.ceil(num / 5); i++) {
-        acc.push({ params: { slug: [category, (i + 1).toString()] } });
+        acc.push({ params: { category, page: (i + 1).toString() } });
       }
       return acc;
     }, []);
-
-    paths.push({ params: { slug: [] } });
 
     res.status(200).json({ paths });
   } catch (error) {
