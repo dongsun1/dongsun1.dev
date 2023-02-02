@@ -118,7 +118,7 @@ export default function About() {
             · <span className="font-bold">SEO</span> 최적화를 위한 <span className="font-bold">SSR, meta tag</span> 적용
           </p>
           <p>
-            · SSG, 페이지네이션, dynamic import 등을 사용하여 초기 로딩 속도 <span className="font-bold">0.76s → 0.01s 개선</span>
+            · SSG, dynamic import 등을 사용하여 초기 로딩 속도 <span className="font-bold">0.76s → 0.01s 개선</span>
           </p>
           <p>
             · 모바일 환경에서 볼 수 있도록 <span className="font-bold">반응형</span>으로 제작
