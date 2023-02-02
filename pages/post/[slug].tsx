@@ -83,50 +83,10 @@ export default function PostPage({ post }: { post: IPost }) {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  // const { data: { paths } = {} } = await axios.get('/api/getPostPaths');
+  const { data: { paths } = {} } = await axios.get('/api/getPostPaths');
 
   return {
-    paths: [
-      { params: { slug: '63bb7a009933a949a4c16285' } },
-      { params: { slug: '63bbc50d9933a949a4c16286' } },
-      { params: { slug: '63bbc6499933a949a4c16287' } },
-      { params: { slug: '63bbc6799933a949a4c16288' } },
-      { params: { slug: '63bbc6be9933a949a4c16289' } },
-      { params: { slug: '63bbc7429933a949a4c1628b' } },
-      { params: { slug: '63bd247d9933a949a4c1628c' } },
-      { params: { slug: '63bd259a9933a949a4c1628e' } },
-      { params: { slug: '63bd25c99933a949a4c1628f' } },
-      { params: { slug: '63bd25e99933a949a4c16290' } },
-      { params: { slug: '63bd26069933a949a4c16291' } },
-      { params: { slug: '63bd261f9933a949a4c16292' } },
-      { params: { slug: '63bd26349933a949a4c16293' } },
-      { params: { slug: '63bd264e9933a949a4c16294' } },
-      { params: { slug: '63bd26689933a949a4c16295' } },
-      { params: { slug: '63bd26849933a949a4c16296' } },
-      { params: { slug: '63bd26a89933a949a4c16297' } },
-      { params: { slug: '63bd26c29933a949a4c16298' } },
-      { params: { slug: '63bd26dd9933a949a4c16299' } },
-      { params: { slug: '63bd26f69933a949a4c1629a' } },
-      { params: { slug: '63bd270f9933a949a4c1629b' } },
-      { params: { slug: '63bd272a9933a949a4c1629c' } },
-      { params: { slug: '63bd274b9933a949a4c1629d' } },
-      { params: { slug: '63bd276c9933a949a4c1629e' } },
-      { params: { slug: '63bd27829933a949a4c1629f' } },
-      { params: { slug: '63bd279e9933a949a4c162a0' } },
-      { params: { slug: '63bd27b79933a949a4c162a1' } },
-      { params: { slug: '63bd27d39933a949a4c162a2' } },
-      { params: { slug: '63bd27ec9933a949a4c162a3' } },
-      { params: { slug: '63bd28039933a949a4c162a4' } },
-      { params: { slug: '63bd281c9933a949a4c162a5' } },
-      { params: { slug: '63bd28349933a949a4c162a6' } },
-      { params: { slug: '63bd284e9933a949a4c162a7' } },
-      { params: { slug: '63bd28659933a949a4c162a8' } },
-      { params: { slug: '63bd287d9933a949a4c162a9' } },
-      { params: { slug: '63bd28999933a949a4c162aa' } },
-      { params: { slug: '63bf8ac878e30a0d278d75e1' } },
-      { params: { slug: '63c89dec78e30a0d278d75e2' } },
-      { params: { slug: '63da21011018b14058d12ce9' } },
-    ],
+    paths,
     fallback: false,
   };
 };
