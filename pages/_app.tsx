@@ -28,7 +28,6 @@ export default function App({ Component, pageProps }: AppProps) {
 // Next.js rendering 방식
 
 // **Development**
-// getServerSideProps -> getStaticProps
 // React Query
 // Search
 // Related posts
