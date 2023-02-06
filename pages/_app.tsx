@@ -24,7 +24,7 @@ export default function App({ Component, pageProps }: AppProps) {
 
 // **Posting**
 // 2022 회고
-// CS
+// CS (운영체제, 네트워크)
 // Next.js rendering 방식
 
 // **Development**
