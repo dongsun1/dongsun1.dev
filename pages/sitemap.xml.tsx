@@ -8,7 +8,7 @@ const createSitemap = (slugs: string[]) => `<?xml version="1.0" encoding="UTF-8"
           .map((slug) => {
             return `
                 <url>
-                    <loc>${`https://dongsun1.dev/post/${slug}/`}</loc>
+                    <loc>${`https://dongsun1.dev/${slug}`}</loc>
                 </url>
             `;
           })
@@ -19,7 +19,7 @@ const createSitemap = (slugs: string[]) => `<?xml version="1.0" encoding="UTF-8"
 export const getServerSideProps: GetServerSideProps = async ({ res }) => {
   const { data: { posts = [] } = {} } = await axios.get<{ posts: IPost[] }>('/api/getPosts');
 
-  const allPages = [...posts.map(({ _id }) => _id), ...['', 'resume', 'categories/All']];
+  const allPages = [...posts.map(({ _id }) => `post/${_id}/`), ...['', 'resume/', 'categories/All/']];
 
   res.setHeader('Content-Type', 'text/xml');
   res.setHeader('Cache-Control', 'public, s-maxage=1200, stale-while-revalidate=600');
