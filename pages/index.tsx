@@ -1,4 +1,4 @@
-import { GetStaticPaths, GetStaticProps } from 'next';
+import { GetStaticProps } from 'next';
 import { ICategoryCounts, IPost } from 'interfaces/post.interface';
 import { useState } from 'react';
 import axios from 'lib/axios';
