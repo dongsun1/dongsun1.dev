@@ -23,7 +23,6 @@ export default function App({ Component, pageProps }: AppProps) {
 // TODO
 
 // **Posting**
-// 2022 회고 (국비, 항해, 입사, 카카오공채, 카카오모빌리티, 퍼플아이오, 줌인터넷)
 // CS (운영체제, 네트워크)
 // Next.js rendering 방식
 
