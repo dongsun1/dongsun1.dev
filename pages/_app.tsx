@@ -26,6 +26,7 @@ export default function App({ Component, pageProps }: AppProps) {
 // CS (운영체제, 네트워크)
 // Next.js rendering 방식
 // Vanilla JS SPA
+// 프로그래머스 테스트 후기
 
 // **Development**
 // React Query
