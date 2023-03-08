@@ -8,7 +8,7 @@ const createSitemap = (slugs: string[]) => `<?xml version="1.0" encoding="UTF-8"
           .map((slug) => {
             return `
                 <url>
-                    <loc>${`https://www.dongsun1.dev/${slug}`}</loc>
+                    <loc>${`https://dongsun1.dev/${slug}`}</loc>
                 </url>
             `;
           })
