@@ -25,7 +25,7 @@ export default function App({ Component, pageProps }: AppProps) {
 // **Posting**
 // CS (운영체제, 네트워크)
 // Next.js rendering 방식
-// Vanilla JS SPA
+// Vanilla JS SPA (2)
 // 프로그래머스 테스트 후기
 
 // **Development**
